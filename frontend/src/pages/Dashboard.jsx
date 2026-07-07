@@ -26,7 +26,7 @@ export default function Dashboard() {
       testId="dashboard-page"
       title="Progress Hub"
       subtitle="Your journey through the ChemiVerse — XP, achievements and explored modules."
-      accent="#8A2BE2"
+      accent="#B026FF"
     >
       <div className="grid md:grid-cols-3 gap-5 mb-8">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass rounded-2xl p-6 glow-purple">

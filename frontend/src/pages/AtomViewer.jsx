@@ -18,7 +18,7 @@ export default function AtomViewer() {
       testId="atom-viewer-page"
       title="Atom Viewer"
       subtitle="Visualize atomic structure with animated electron shells. Drag to rotate, scroll to zoom."
-      accent="#8A2BE2"
+      accent="#B026FF"
     >
       <div className="grid lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 glass rounded-3xl h-[520px] relative overflow-hidden">

@@ -31,7 +31,7 @@ export default function ReactionSimulator() {
       testId="reaction-simulator-page"
       title="Reaction Simulator"
       subtitle="Pick a reaction and watch reactants transform into products with energy flow."
-      accent="#4ade80"
+      accent="#1FE3C2"
     >
       <div className="grid lg:grid-cols-3 gap-6">
         {/* Reaction list */}

@@ -74,7 +74,7 @@ export default function AITutor() {
   };
 
   return (
-    <PageShell testId="ai-tutor-page" title="AI Tutor" subtitle="ChemiBot answers your chemistry questions in real time." accent="#00F5FF">
+    <PageShell testId="ai-tutor-page" title="AI Tutor" subtitle="ChemiBot answers your chemistry questions in real time." accent="#3FA9FF">
       <div className="max-w-3xl mx-auto">
         <div ref={scrollRef} data-testid="chat-window" className="glass rounded-3xl p-6 h-[52vh] overflow-y-auto space-y-5">
           {messages.map((m, i) => (

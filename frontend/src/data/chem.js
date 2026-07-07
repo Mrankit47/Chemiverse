@@ -1,16 +1,16 @@
 // Category colors for periodic table + atom rendering
 export const CATEGORY_COLORS = {
-  alkali: "#FF6B00",
-  alkaline: "#FFB300",
-  transition: "#00F5FF",
-  "post-transition": "#42d7b8",
-  metalloid: "#8A2BE2",
-  nonmetal: "#4ade80",
-  halogen: "#facc15",
-  noble: "#f472b6",
+  alkali: "#FF9E1B",
+  alkaline: "#FFD23F",
+  transition: "#3FA9FF",
+  "post-transition": "#1FE3C2",
+  metalloid: "#B026FF",
+  nonmetal: "#7CFF3C",
+  halogen: "#c8ff4d",
+  noble: "#FF3FA4",
   lanthanide: "#c084fc",
   actinide: "#f0728c",
-  unknown: "#64748b",
+  unknown: "#7d8f83",
 };
 
 export const CATEGORY_LABELS = {
@@ -164,28 +164,28 @@ export const REACTIONS = [
     id: "combustion", name: "Combustion of Methane", type: "Combustion",
     equation: "CH₄ + 2O₂ → CO₂ + 2H₂O",
     reactants: ["CH₄", "2 O₂"], products: ["CO₂", "2 H₂O"],
-    energy: "exothermic", color: "#FF6B00",
+    energy: "exothermic", color: "#FF9E1B",
     desc: "Methane burns in oxygen releasing large amounts of heat and light — the reaction that powers gas stoves.",
   },
   {
     id: "neutralization", name: "Acid–Base Neutralization", type: "Neutralization",
     equation: "HCl + NaOH → NaCl + H₂O",
     reactants: ["HCl", "NaOH"], products: ["NaCl", "H₂O"],
-    energy: "exothermic", color: "#00F5FF",
+    energy: "exothermic", color: "#3FA9FF",
     desc: "A strong acid meets a strong base, producing salt and water while releasing heat.",
   },
   {
     id: "synthesis", name: "Ammonia Synthesis (Haber)", type: "Synthesis",
     equation: "N₂ + 3H₂ → 2NH₃",
     reactants: ["N₂", "3 H₂"], products: ["2 NH₃"],
-    energy: "exothermic", color: "#8A2BE2",
+    energy: "exothermic", color: "#B026FF",
     desc: "The Haber process fixes atmospheric nitrogen into ammonia, feeding billions through fertilizers.",
   },
   {
     id: "photosynthesis", name: "Photosynthesis", type: "Endothermic",
     equation: "6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂",
     reactants: ["6 CO₂", "6 H₂O"], products: ["C₆H₁₂O₆", "6 O₂"],
-    energy: "endothermic", color: "#4ade80",
+    energy: "endothermic", color: "#7CFF3C",
     desc: "Plants capture light energy to convert carbon dioxide and water into glucose and oxygen.",
   },
   {
@@ -222,12 +222,12 @@ export const QUIZ = [
 
 // Module registry used by the home grid + dashboard
 export const MODULES = [
-  { id: "periodic", title: "Periodic Galaxy", path: "/periodic-galaxy", icon: "atom", desc: "118 elements as glowing planets. Click any to open its 3D profile.", accent: "#00F5FF" },
-  { id: "atom", title: "Atom Viewer", path: "/atom-viewer", icon: "orbit", desc: "Explore atomic structure with animated electron shells in 3D.", accent: "#8A2BE2" },
-  { id: "molecule", title: "Molecule Viewer", path: "/molecule-viewer", icon: "hexagon", desc: "Rotate ball-and-stick models of real molecules.", accent: "#FF6B00" },
-  { id: "reaction", title: "Reaction Simulator", path: "/reaction-simulator", icon: "flask-conical", desc: "Watch reactants transform into products with energy flow.", accent: "#4ade80" },
-  { id: "lab", title: "Virtual Lab", path: "/virtual-lab", icon: "test-tubes", desc: "Mix reagents and observe color changes safely.", accent: "#f472b6" },
-  { id: "quiz", title: "Quiz Arena", path: "/quiz", icon: "zap", desc: "Test your chemistry knowledge and earn XP.", accent: "#facc15" },
-  { id: "tutor", title: "AI Tutor", path: "/ai-tutor", icon: "sparkles", desc: "Ask ChemiBot anything about chemistry, 24/7.", accent: "#00F5FF" },
-  { id: "dashboard", title: "Progress Hub", path: "/dashboard", icon: "trophy", desc: "Track XP, achievements and completed modules.", accent: "#8A2BE2" },
+  { id: "periodic", title: "Periodic Galaxy", path: "/periodic-galaxy", icon: "atom", desc: "118 elements as glowing planets. Click any to open its 3D profile.", accent: "#7CFF3C" },
+  { id: "atom", title: "Atom Viewer", path: "/atom-viewer", icon: "orbit", desc: "Explore atomic structure with animated electron shells in 3D.", accent: "#B026FF" },
+  { id: "molecule", title: "Molecule Viewer", path: "/molecule-viewer", icon: "hexagon", desc: "Rotate ball-and-stick models of real molecules.", accent: "#FF9E1B" },
+  { id: "reaction", title: "Reaction Simulator", path: "/reaction-simulator", icon: "flask-conical", desc: "Watch reactants transform into products with energy flow.", accent: "#1FE3C2" },
+  { id: "lab", title: "Virtual Lab", path: "/virtual-lab", icon: "test-tubes", desc: "Mix reagents and observe color changes safely.", accent: "#FF3FA4" },
+  { id: "quiz", title: "Quiz Arena", path: "/quiz", icon: "zap", desc: "Test your chemistry knowledge and earn XP.", accent: "#FFD23F" },
+  { id: "tutor", title: "AI Tutor", path: "/ai-tutor", icon: "sparkles", desc: "Ask ChemiBot anything about chemistry, 24/7.", accent: "#3FA9FF" },
+  { id: "dashboard", title: "Progress Hub", path: "/dashboard", icon: "trophy", desc: "Track XP, achievements and completed modules.", accent: "#B026FF" },
 ];

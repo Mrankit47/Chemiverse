@@ -44,7 +44,7 @@ export default function Molecule3D({ molecule, autoRotate = true }) {
     <group ref={group}>
       <ambientLight intensity={0.7} />
       <pointLight position={[8, 8, 8]} intensity={160} />
-      <pointLight position={[-8, -6, -4]} intensity={70} color="#8A2BE2" />
+      <pointLight position={[-8, -6, -4]} intensity={70} color="#B026FF" />
       {molecule.atoms.map((a, i) => {
         const style = ATOM_STYLE[a.el] || { color: "#94a3b8", r: 0.5 };
         return (

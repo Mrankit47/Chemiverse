@@ -31,7 +31,7 @@ export default function PeriodicGalaxy() {
       testId="periodic-galaxy-page"
       title="Periodic Galaxy"
       subtitle="Every element is a glowing world. Tap any tile to open its 3D atomic profile."
-      accent="#00F5FF"
+      accent="#7CFF3C"
     >
       {/* Controls */}
       <div className="flex flex-col md:flex-row gap-4 mb-8">
@@ -54,7 +54,7 @@ export default function PeriodicGalaxy() {
               className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                 filter === c ? "text-black" : "glass text-[var(--muted)] hover:text-white"
               }`}
-              style={filter === c ? { background: c === "all" ? "#00F5FF" : CATEGORY_COLORS[c] } : {}}
+              style={filter === c ? { background: c === "all" ? "#7CFF3C" : CATEGORY_COLORS[c] } : {}}
             >
               {c === "all" ? "All" : CATEGORY_LABELS[c]}
             </button>

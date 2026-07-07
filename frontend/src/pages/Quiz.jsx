@@ -45,7 +45,7 @@ export default function Quiz() {
   if (finished) {
     const pct = Math.round((score / questions.length) * 100);
     return (
-      <PageShell testId="quiz-page" title="Quiz Arena" accent="#facc15">
+      <PageShell testId="quiz-page" title="Quiz Arena" accent="#FFD23F">
         <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass rounded-3xl p-12 text-center max-w-lg mx-auto">
           <Trophy className="w-16 h-16 mx-auto text-[var(--orange)] mb-4" />
           <h2 className="font-display font-extrabold text-3xl">Quiz Complete!</h2>
@@ -60,7 +60,7 @@ export default function Quiz() {
   }
 
   return (
-    <PageShell testId="quiz-page" title="Quiz Arena" subtitle="Answer to earn XP. 10 XP per correct answer." accent="#facc15">
+    <PageShell testId="quiz-page" title="Quiz Arena" subtitle="Answer to earn XP. 10 XP per correct answer." accent="#FFD23F">
       <div className="max-w-2xl mx-auto">
         <div className="flex items-center justify-between mb-4 text-sm text-[var(--muted)] font-mono">
           <span>Question {step + 1} / {questions.length}</span>

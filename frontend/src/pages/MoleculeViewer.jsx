@@ -15,7 +15,7 @@ export default function MoleculeViewer() {
       testId="molecule-viewer-page"
       title="Molecule Viewer"
       subtitle="Rotate real molecules in 3D ball-and-stick form. Explore geometry, bonds and structure."
-      accent="#FF6B00"
+      accent="#FF9E1B"
     >
       <div className="grid lg:grid-cols-3 gap-6">
         {/* Selector */}
@@ -32,7 +32,7 @@ export default function MoleculeViewer() {
                 }`}
               >
                 <span className="font-medium">{m.name}</span>
-                <span className="font-mono text-sm" style={{ color: id === m.id ? "#FF6B00" : "inherit" }}>{m.formula}</span>
+                <span className="font-mono text-sm" style={{ color: id === m.id ? "#FF9E1B" : "inherit" }}>{m.formula}</span>
               </button>
             ))}
           </div>

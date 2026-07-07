@@ -30,7 +30,7 @@ function ElectronShell({ radius, count, speed, tilt, color }) {
   );
 }
 
-export default function Atom3D({ shells = [2], color = "#00F5FF", nucleusScale = 1 }) {
+export default function Atom3D({ shells = [2], color = "#7CFF3C", nucleusScale = 1 }) {
   const nucleus = useRef();
   useFrame((_, dt) => {
     if (nucleus.current) nucleus.current.rotation.y += dt * 0.4;
@@ -39,7 +39,7 @@ export default function Atom3D({ shells = [2], color = "#00F5FF", nucleusScale =
     <group>
       <ambientLight intensity={0.6} />
       <pointLight position={[6, 6, 6]} intensity={120} color={color} />
-      <pointLight position={[-6, -4, -4]} intensity={60} color="#8A2BE2" />
+      <pointLight position={[-6, -4, -4]} intensity={60} color="#B026FF" />
       {/* nucleus */}
       <mesh ref={nucleus} scale={nucleusScale}>
         <icosahedronGeometry args={[0.55, 2]} />

@@ -4,35 +4,36 @@
 @tailwind utilities;
 
 :root {
-  --bg: #050816;
-  --surface: #10182A;
-  --surface-2: #16203a;
-  --cyan: #00F5FF;
-  --purple: #8A2BE2;
-  --orange: #FF6B00;
-  --text: #e8eefc;
-  --muted: #8ea0c4;
-  --border: rgba(0, 245, 255, 0.12);
+  /* Neon Lab palette */
+  --bg: #060907;
+  --surface: #0e1512;
+  --surface-2: #131d18;
+  --cyan: #7CFF3C;      /* primary — neon lab green */
+  --purple: #B026FF;    /* secondary — electric magenta */
+  --orange: #FF9E1B;    /* accent — amber */
+  --text: #eaf6ec;
+  --muted: #8ba394;
+  --border: rgba(124, 255, 60, 0.14);
 
-  --background: 230 60% 5%;
-  --foreground: 220 60% 95%;
-  --card: 222 46% 12%;
-  --card-foreground: 220 60% 95%;
-  --popover: 222 46% 10%;
-  --popover-foreground: 220 60% 95%;
-  --primary: 186 100% 50%;
-  --primary-foreground: 230 60% 5%;
-  --secondary: 271 76% 53%;
+  --background: 150 20% 4%;
+  --foreground: 130 30% 94%;
+  --card: 156 22% 8%;
+  --card-foreground: 130 30% 94%;
+  --popover: 156 24% 6%;
+  --popover-foreground: 130 30% 94%;
+  --primary: 97 100% 62%;
+  --primary-foreground: 130 60% 6%;
+  --secondary: 279 100% 57%;
   --secondary-foreground: 0 0% 100%;
-  --muted: 222 30% 20%;
-  --muted-foreground: 220 20% 65%;
-  --accent: 24 100% 50%;
-  --accent-foreground: 0 0% 100%;
+  --muted: 156 14% 20%;
+  --muted-foreground: 140 12% 62%;
+  --accent: 38 100% 55%;
+  --accent-foreground: 130 60% 6%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
-  --border: 222 40% 22%;
-  --input: 222 40% 18%;
-  --ring: 186 100% 50%;
+  --border: 150 25% 16%;
+  --input: 150 25% 14%;
+  --ring: 97 100% 62%;
   --radius: 0.9rem;
 }
 
@@ -54,59 +55,56 @@ h1, h2, h3, h4, .font-display { font-family: 'Sora', 'Space Grotesk', sans-serif
 .font-grotesk { font-family: 'Space Grotesk', sans-serif; }
 .font-mono { font-family: 'IBM Plex Mono', monospace; }
 
-/* Aurora / grid background */
+/* Base color wash behind the 3D particle canvas */
 .chem-bg {
-  position: fixed; inset: 0; z-index: -2;
+  position: fixed; inset: 0; z-index: -3;
   background:
-    radial-gradient(60% 50% at 15% 10%, rgba(0,245,255,0.10), transparent 60%),
-    radial-gradient(55% 45% at 85% 20%, rgba(138,43,226,0.14), transparent 60%),
-    radial-gradient(50% 50% at 60% 100%, rgba(255,107,0,0.08), transparent 60%),
+    radial-gradient(55% 45% at 12% 8%, rgba(124,255,60,0.10), transparent 60%),
+    radial-gradient(50% 45% at 88% 18%, rgba(176,38,255,0.14), transparent 60%),
+    radial-gradient(45% 45% at 55% 105%, rgba(255,158,27,0.08), transparent 60%),
     var(--bg);
 }
 .chem-grid {
-  position: fixed; inset: 0; z-index: -1; opacity: 0.4;
+  position: fixed; inset: 0; z-index: -1; opacity: 0.35;
   background-image:
-    linear-gradient(rgba(0,245,255,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,245,255,0.05) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 80%);
+    linear-gradient(rgba(124,255,60,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,255,60,0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 82%);
 }
+/* fixed 3D particle background canvas */
+.scene-bg { position: fixed; inset: 0; z-index: -2; pointer-events: none; }
 
-/* Glass panels */
 .glass {
-  background: rgba(16, 24, 42, 0.55);
+  background: rgba(14, 21, 18, 0.6);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border);
 }
 
-.glow-cyan { box-shadow: 0 0 30px rgba(0,245,255,0.25); }
-.glow-purple { box-shadow: 0 0 30px rgba(138,43,226,0.3); }
-.text-glow { text-shadow: 0 0 22px rgba(0,245,255,0.55); }
+.glow-cyan { box-shadow: 0 0 30px rgba(124,255,60,0.28); }
+.glow-purple { box-shadow: 0 0 30px rgba(176,38,255,0.3); }
+.text-glow { text-shadow: 0 0 22px rgba(124,255,60,0.5); }
 
 .grad-text {
-  background: linear-gradient(100deg, #00F5FF 0%, #8A2BE2 55%, #FF6B00 100%);
+  background: linear-gradient(100deg, #7CFF3C 0%, #B026FF 55%, #FF9E1B 100%);
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: linear-gradient(var(--cyan), var(--purple)); border-radius: 8px; }
-::selection { background: rgba(0,245,255,0.3); color: #fff; }
+::selection { background: rgba(124,255,60,0.3); color: #fff; }
 
-/* Marquee */
 .marquee { display: flex; overflow: hidden; white-space: nowrap; }
 .marquee-track { display: flex; gap: 2.5rem; animation: marquee 30s linear infinite; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-/* Floating */
 @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
 .floaty { animation: floaty 6s ease-in-out infinite; }
 
-/* Pulse ring */
-@keyframes pulsering { 0% { box-shadow: 0 0 0 0 rgba(0,245,255,0.4);} 100% { box-shadow: 0 0 0 22px rgba(0,245,255,0);} }
+@keyframes pulsering { 0% { box-shadow: 0 0 0 0 rgba(124,255,60,0.4);} 100% { box-shadow: 0 0 0 22px rgba(124,255,60,0);} }
 .pulsering { animation: pulsering 2.4s ease-out infinite; }
 
 @keyframes fadeup { from { opacity:0; transform: translateY(24px);} to { opacity:1; transform: translateY(0);} }
@@ -121,7 +119,7 @@ h1, h2, h3, h4, .font-display { font-family: 'Sora', 'Space Grotesk', sans-serif
 .prose-chem strong { color: #fff; font-weight: 600; }
 .prose-chem ul, .prose-chem ol { margin: 0.4rem 0; padding-left: 1.2rem; }
 .prose-chem li { margin: 0.2rem 0; }
-.prose-chem code { font-family: 'IBM Plex Mono', monospace; background: rgba(0,245,255,0.12); padding: 0.1rem 0.35rem; border-radius: 5px; font-size: 0.9em; }
+.prose-chem code { font-family: 'IBM Plex Mono', monospace; background: rgba(124,255,60,0.12); padding: 0.1rem 0.35rem; border-radius: 5px; font-size: 0.9em; }
 .prose-chem blockquote { border-left: 3px solid var(--cyan); padding-left: 0.8rem; color: var(--muted); margin: 0.5rem 0; }
 .prose-chem h1, .prose-chem h2, .prose-chem h3 { font-size: 1.05rem; margin: 0.6rem 0 0.3rem; }
 .prose-chem a { color: var(--cyan); }

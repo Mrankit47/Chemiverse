@@ -4,7 +4,7 @@ import { ChevronLeft } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-export default function PageShell({ title, subtitle, accent = "#00F5FF", children, testId }) {
+export default function PageShell({ title, subtitle, accent = "#7CFF3C", children, testId }) {
   return (
     <div className="min-h-screen" data-testid={testId}>
       <Navbar />

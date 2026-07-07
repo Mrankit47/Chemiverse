@@ -53,7 +53,7 @@ export default function VirtualLab() {
       testId="virtual-lab-page"
       title="Virtual Lab"
       subtitle="Pick two reagents, mix them in the beaker and observe the reaction — safely."
-      accent="#f472b6"
+      accent="#FF3FA4"
     >
       <div className="grid lg:grid-cols-2 gap-8">
         {/* Beaker */}

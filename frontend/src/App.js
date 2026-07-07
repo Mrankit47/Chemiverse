@@ -1,5 +1,6 @@
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SceneBackground from "@/components/three/SceneBackground";
 import Home from "@/pages/Home";
 import PeriodicGalaxy from "@/pages/PeriodicGalaxy";
 import ElementProfile from "@/pages/ElementProfile";
@@ -15,6 +16,7 @@ function App() {
   return (
     <div className="App">
       <div className="chem-bg" />
+      <SceneBackground />
       <div className="chem-grid" />
       <BrowserRouter>
         <Routes>
