@@ -114,3 +114,14 @@ h1, h2, h3, h4, .font-display { font-family: 'Sora', 'Space Grotesk', sans-serif
 
 .hover-lift { transition: transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s ease, border-color .35s ease; }
 .hover-lift:hover { transform: translateY(-6px); }
+
+/* Markdown in chat */
+.prose-chem p { margin: 0 0 0.6rem; }
+.prose-chem p:last-child { margin-bottom: 0; }
+.prose-chem strong { color: #fff; font-weight: 600; }
+.prose-chem ul, .prose-chem ol { margin: 0.4rem 0; padding-left: 1.2rem; }
+.prose-chem li { margin: 0.2rem 0; }
+.prose-chem code { font-family: 'IBM Plex Mono', monospace; background: rgba(0,245,255,0.12); padding: 0.1rem 0.35rem; border-radius: 5px; font-size: 0.9em; }
+.prose-chem blockquote { border-left: 3px solid var(--cyan); padding-left: 0.8rem; color: var(--muted); margin: 0.5rem 0; }
+.prose-chem h1, .prose-chem h2, .prose-chem h3 { font-size: 1.05rem; margin: 0.6rem 0 0.3rem; }
+.prose-chem a { color: var(--cyan); }

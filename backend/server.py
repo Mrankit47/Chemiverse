@@ -102,11 +102,6 @@ async def tutor_stream(session_id: str, message: str):
         system_message=TUTOR_SYSTEM,
     ).with_model("anthropic", "claude-sonnet-4-6")
 
-    # load prior history into this fresh instance
-    prior = await db.tutor_messages.find(
-        {"session_id": session_id}, {"_id": 0}
-    ).sort("ts", 1).to_list(200)
-
     full = ""
     try:
         async for event in chat.stream_message(UserMessage(text=message)):

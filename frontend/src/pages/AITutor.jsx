@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Send, Sparkles, User } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 import PageShell from "@/components/PageShell";
 import { API, getUserId } from "@/lib/progress";
 
@@ -88,11 +89,19 @@ export default function AITutor() {
               </div>
               <div
                 data-testid={`chat-msg-${m.role}`}
-                className={`px-4 py-3 rounded-2xl max-w-[80%] whitespace-pre-wrap leading-relaxed ${
+                className={`px-4 py-3 rounded-2xl max-w-[80%] leading-relaxed prose-chem ${
                   m.role === "user" ? "bg-[var(--purple)]/15" : "bg-white/5"
                 }`}
               >
-                {m.content || (loading && i === messages.length - 1 ? <span className="opacity-60">ChemiBot is thinking…</span> : "")}
+                {m.content ? (
+                  m.role === "assistant" ? (
+                    <ReactMarkdown>{m.content}</ReactMarkdown>
+                  ) : (
+                    <span className="whitespace-pre-wrap">{m.content}</span>
+                  )
+                ) : (
+                  loading && i === messages.length - 1 ? <span className="opacity-60">ChemiBot is thinking…</span> : ""
+                )}
               </div>
             </motion.div>
           ))}
