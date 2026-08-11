@@ -17,9 +17,142 @@ from emergentintegrations.llm.chat import LlmChat, UserMessage, TextDelta, Strea
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+mongo_url = os.environ.get('MONGO_URL', '')
+db_name = os.environ.get('DB_NAME', 'chemiverse')
+
+# In-Memory Fallback Mock MongoDB client for environments where MongoDB is not running locally
+class MockCursor:
+    def __init__(self, data, sort_key=None, sort_dir=1):
+        self.data = data
+        self.sort_key = sort_key
+        self.sort_dir = sort_dir
+
+    def sort(self, key, direction=1):
+        self.sort_key = key
+        self.sort_dir = direction
+        return self
+
+    async def to_list(self, length):
+        res = list(self.data)
+        if self.sort_key:
+            res.sort(key=lambda x: x.get(self.sort_key) if x.get(self.sort_key) is not None else 0, reverse=(self.sort_dir == -1))
+        return res[:length]
+
+class MockCollection:
+    def __init__(self, name):
+        self.name = name
+        self.docs = []
+
+    async def insert_one(self, doc):
+        self.docs.append(doc.copy())
+        return self
+
+    async def insert_many(self, docs):
+        for d in docs:
+            self.docs.append(d.copy())
+        return self
+
+    def find(self, spec=None, projection=None):
+        spec = spec or {}
+        matched = []
+        for d in self.docs:
+            match = True
+            for k, v in spec.items():
+                if d.get(k) != v:
+                    match = False
+                    break
+            if match:
+                proj_d = d.copy()
+                if projection:
+                    for pk, pv in projection.items():
+                        if pv == 0 and pk in proj_d:
+                            proj_d.pop(pk)
+                matched.append(proj_d)
+        return MockCursor(matched)
+
+    async def find_one(self, spec, projection=None):
+        cursor = self.find(spec, projection)
+        matched = await cursor.to_list(1)
+        return matched[0] if matched else None
+
+    async def update_one(self, spec, update, upsert=False):
+        found_idx = -1
+        for idx, d in enumerate(self.docs):
+            match = True
+            for k, v in spec.items():
+                if d.get(k) != v:
+                    match = False
+                    break
+            if match:
+                found_idx = idx
+                break
+
+        if found_idx == -1:
+            if upsert:
+                new_doc = spec.copy()
+                if "$set" in update:
+                    for k, v in update["$set"].items():
+                        new_doc[k] = v
+                self.docs.append(new_doc)
+            return self
+
+        doc = self.docs[found_idx]
+        if "$set" in update:
+            for k, v in update["$set"].items():
+                doc[k] = v
+        return self
+
+class MockDB:
+    def __init__(self):
+        self.collections = {}
+
+    def __getattr__(self, name):
+        if name not in self.collections:
+            self.collections[name] = MockCollection(name)
+        return self.collections[name]
+
+    def __getitem__(self, name):
+        return self.__getattr__(name)
+
+class MockAsyncIOMotorClient:
+    def __init__(self, uri=None):
+        self.db = MockDB()
+
+    def __getitem__(self, name):
+        return self.db
+
+import socket
+def is_port_open(host, port):
+    try:
+        with socket.create_connection((host, port), timeout=1.0):
+            return True
+    except Exception:
+        return False
+
+# Parse host/port from mongo_url
+use_mock = True
+if mongo_url:
+    try:
+        if "localhost" in mongo_url or "127.0.0.1" in mongo_url:
+            port = 27017
+            parts = mongo_url.split("//")[-1].split("/")
+            if ":" in parts[0]:
+                port = int(parts[0].split(":")[-1])
+            if is_port_open("localhost", port):
+                use_mock = False
+        else:
+            use_mock = False
+    except Exception:
+        pass
+
+if use_mock:
+    logging.warning("MongoDB port is not reachable. Initializing in-memory Mock MongoDB fallback.")
+    client = MockAsyncIOMotorClient()
+    db = client[db_name]
+else:
+    logging.info(f"Connecting to MongoDB at: {mongo_url}")
+    client = AsyncIOMotorClient(mongo_url)
+    db = client[db_name]
 
 EMERGENT_LLM_KEY = os.environ.get('EMERGENT_LLM_KEY', '')
 
