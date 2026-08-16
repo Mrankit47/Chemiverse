@@ -105,26 +105,57 @@ Make sure you create a database named `chemiverse` (or set it in the backend env
 
 ---
 
+---
+
+## 🚀 Production Deployment
+
+ChemiVerse is fully configured and deployment-ready for standard cloud providers and container environments.
+
+### Option 1: Docker & Docker Compose (Recommended for Fullstack)
+Run the entire stack (Frontend + Backend + MongoDB) with a single command:
+```bash
+docker compose up --build
+```
+- **Frontend**: `http://localhost:3000`
+- **Backend API**: `http://localhost:8000`
+- **MongoDB**: `localhost:27017`
+
+### Option 2: Deploy Frontend (Vercel / Netlify / Cloudflare Pages)
+1. Link your repository to **Vercel** or **Netlify**.
+2. Set the Root Directory to `frontend`.
+3. Set the build command: `yarn build` (or `npm run build`).
+4. Set the output directory: `build`.
+5. Set environment variable: `REACT_APP_BACKEND_URL` pointing to your deployed backend URL.
+*(SPA routing is pre-configured via `vercel.json` and `_redirects`)*.
+
+### Option 3: Deploy Backend (Render / Railway / Fly.io / Heroku)
+1. **Render (Blueprint)**: Connect your repo to Render; it will automatically detect `render.yaml` to deploy both services.
+2. **Railway / Heroku**: Use the pre-configured `backend/Procfile` or `backend/Dockerfile`.
+3. Configure environment variables in your cloud dashboard:
+   - `MONGO_URL`: Your MongoDB connection string (e.g. MongoDB Atlas) or leave blank to use the built-in in-memory DB fallback.
+   - `CORS_ORIGINS`: Your production frontend domain (e.g. `https://chemiverse.vercel.app`).
+   - `EMERGENT_LLM_KEY` or `ANTHROPIC_API_KEY`: For live AI tutor streaming (fallback response generator is active if omitted).
+
+---
+
 ## Running Tests
 
 ### Backend API Tests
-To run backend integration and unit tests, ensure the backend server is running, then run `pytest` inside the activated virtual environment in the `backend/` folder:
+To run backend integration and unit tests:
 
 ```bash
 cd backend
 pytest
 ```
 
-> [!NOTE]
-> The backend tests require `pytest-xdist` (already specified in `requirements.txt`) and run on 2 parallel workers by default as configured in `pytest.ini`.
-
 ---
 
 ## Troubleshooting
 
-- **FastAPI shows "LLM key not configured"**:
-  Make sure you have populated `EMERGENT_LLM_KEY` in `backend/.env`.
 - **CORS Errors on Frontend**:
-  Verify that the backend's `CORS_ORIGINS` includes the port/URL of the frontend (normally `http://localhost:3000`).
-- **Cannot connect to MongoDB**:
-  Ensure the MongoDB server is running and the `MONGO_URL` in `backend/.env` points to the correct address.
+  Verify that the backend's `CORS_ORIGINS` includes the domain/URL of your frontend.
+- **AI Tutor Streaming**:
+  The AI Tutor includes an automatic smart fallback generator. For full LLM responses, set `ANTHROPIC_API_KEY` or `EMERGENT_LLM_KEY` in `backend/.env`.
+- **Database Connection**:
+  If MongoDB is not reachable locally or in the cloud, ChemiVerse automatically switches to an internal in-memory fallback without crashing.
+
