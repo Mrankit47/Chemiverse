@@ -36,8 +36,8 @@ function liquidVec2(pts, fill) {
 
 function Flask({ type, color, position = [0, 0, 0], fill = 0.8, scale = 1 }) {
   const profile = PROFILES[type];
-  const glassGeo = useMemo(() => new THREE.LatheGeometry(toVec2(profile), 48), [type]);
-  const liquidGeo = useMemo(() => new THREE.LatheGeometry(liquidVec2(profile, fill), 48), [type, fill]);
+  const glassGeo = useMemo(() => new THREE.LatheGeometry(toVec2(profile), 48), [profile]);
+  const liquidGeo = useMemo(() => new THREE.LatheGeometry(liquidVec2(profile, fill), 48), [profile, fill]);
   const topY = profile[profile.length - 1][1] * scale;
   const midY = fill * 0.5 * scale;
 
