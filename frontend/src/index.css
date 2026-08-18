@@ -76,9 +76,9 @@ h1, h2, h3, h4, .font-display { font-family: 'Sora', 'Space Grotesk', sans-serif
 .scene-bg { position: fixed; inset: 0; z-index: -2; pointer-events: none; }
 
 .glass {
-  background: rgba(14, 21, 18, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(14, 21, 18, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--border);
 }
 

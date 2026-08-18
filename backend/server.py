@@ -155,6 +155,9 @@ else:
     db = client[db_name]
 
 EMERGENT_LLM_KEY = os.environ.get('EMERGENT_LLM_KEY', '')
+GROQ_API_KEY = os.environ.get('GROQ_API_KEY', '')
+GROQ_MODEL = os.environ.get('GROQ_MODEL', 'llama-3.3-70b-versatile')
+ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY', '')
 
 app = FastAPI(title="ChemiVerse API")
 api_router = APIRouter(prefix="/api")
@@ -229,11 +232,36 @@ TUTOR_SYSTEM = (
 
 
 async def tutor_stream(session_id: str, message: str):
-    chat = LlmChat(
-        api_key=EMERGENT_LLM_KEY,
-        session_id=session_id,
-        system_message=TUTOR_SYSTEM,
-    ).with_model("anthropic", "claude-sonnet-4-6")
+    # Resolve provider and key (Groq priority, then Anthropic/Emergent, then smart mock)
+    groq_key = os.environ.get('GROQ_API_KEY', '')
+    groq_model = os.environ.get('GROQ_MODEL', 'llama-3.3-70b-versatile')
+    emergent_key = os.environ.get('EMERGENT_LLM_KEY', '')
+    anthropic_key = os.environ.get('ANTHROPIC_API_KEY', '')
+
+    if groq_key and not groq_key.startswith('your-'):
+        chat = LlmChat(
+            api_key=groq_key,
+            session_id=session_id,
+            system_message=TUTOR_SYSTEM,
+        ).with_model("groq", groq_model)
+    elif anthropic_key and not anthropic_key.startswith('your-'):
+        chat = LlmChat(
+            api_key=anthropic_key,
+            session_id=session_id,
+            system_message=TUTOR_SYSTEM,
+        ).with_model("anthropic", "claude-3-5-sonnet-20241022")
+    elif emergent_key and not emergent_key.startswith('your-'):
+        chat = LlmChat(
+            api_key=emergent_key,
+            session_id=session_id,
+            system_message=TUTOR_SYSTEM,
+        ).with_model("anthropic", "claude-sonnet-4-6")
+    else:
+        chat = LlmChat(
+            api_key="",
+            session_id=session_id,
+            system_message=TUTOR_SYSTEM,
+        )
 
     full = ""
     try:
@@ -258,8 +286,6 @@ async def tutor_stream(session_id: str, message: str):
 
 @api_router.post("/tutor/chat")
 async def tutor_chat(req: ChatRequest):
-    if not EMERGENT_LLM_KEY:
-        raise HTTPException(status_code=500, detail="LLM key not configured")
     return StreamingResponse(
         tutor_stream(req.session_id, req.message),
         media_type="text/event-stream",

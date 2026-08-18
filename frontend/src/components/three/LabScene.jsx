@@ -36,8 +36,8 @@ function liquidVec2(pts, fill) {
 
 function Flask({ type, color, position = [0, 0, 0], fill = 0.8, scale = 1 }) {
   const profile = PROFILES[type];
-  const glassGeo = useMemo(() => new THREE.LatheGeometry(toVec2(profile), 48), [profile]);
-  const liquidGeo = useMemo(() => new THREE.LatheGeometry(liquidVec2(profile, fill), 48), [profile, fill]);
+  const glassGeo = useMemo(() => new THREE.LatheGeometry(toVec2(profile), 24), [profile]);
+  const liquidGeo = useMemo(() => new THREE.LatheGeometry(liquidVec2(profile, fill), 24), [profile, fill]);
   const topY = profile[profile.length - 1][1] * scale;
   const midY = fill * 0.5 * scale;
 
@@ -71,13 +71,13 @@ function Flask({ type, color, position = [0, 0, 0], fill = 0.8, scale = 1 }) {
       <pointLight position={[0, midY + 0.15, 0]} color={color} intensity={9} distance={6} decay={1.5} />
       {/* contact glow on the bench */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.012, 0]}>
-        <circleGeometry args={[profile.reduce((m, p) => Math.max(m, p[0]), 0) * 1.6, 32]} />
+        <circleGeometry args={[profile.reduce((m, p) => Math.max(m, p[0]), 0) * 1.6, 16]} />
         <meshBasicMaterial color={color} transparent opacity={0.22} blending={THREE.AdditiveBlending} depthWrite={false} />
       </mesh>
       {/* bubbles inside liquid */}
-      <Sparkles count={9} scale={[0.6, fill * 0.7, 0.6]} position={[0, fill * 0.4, 0]} size={2.5} speed={0.6} color={color} opacity={0.9} />
+      <Sparkles count={4} scale={[0.6, fill * 0.7, 0.6]} position={[0, fill * 0.4, 0]} size={2.5} speed={0.6} color={color} opacity={0.9} />
       {/* rising smoke / vapour from the mouth */}
-      <Sparkles count={22} scale={[0.5, 1.4, 0.5]} position={[0, topY + 0.7, 0]} size={5} speed={0.35} color={color} opacity={0.45} />
+      <Sparkles count={8} scale={[0.5, 1.4, 0.5]} position={[0, topY + 0.7, 0]} size={5} speed={0.35} color={color} opacity={0.45} />
     </group>
   );
 }
@@ -128,7 +128,7 @@ export default function LabScene() {
       </group>
 
       {/* ambient floating lab particles */}
-      <Sparkles count={40} scale={[12, 5, 5]} position={[0, 2.5, 0]} size={2} speed={0.25} color="#7CFF3C" opacity={0.4} />
+      <Sparkles count={16} scale={[12, 5, 5]} position={[0, 2.5, 0]} size={2} speed={0.25} color="#7CFF3C" opacity={0.4} />
     </group>
   );
 }
