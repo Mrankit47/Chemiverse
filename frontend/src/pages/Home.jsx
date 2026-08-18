@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { motion } from "framer-motion";
-import * as Icons from "lucide-react";
+import { Atom, Orbit, Hexagon, FlaskConical, TestTubes, Zap, Sparkles, Trophy, ArrowRight } from "lucide-react";
 import LabScene from "@/components/three/LabScene";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { MODULES } from "@/data/chem";
 
+const ICON_MAP = { atom: Atom, orbit: Orbit, hexagon: Hexagon, "flask-conical": FlaskConical, "test-tubes": TestTubes, zap: Zap, sparkles: Sparkles, trophy: Trophy };
 function Icon({ name, className }) {
-  const map = { atom: "Atom", orbit: "Orbit", hexagon: "Hexagon", "flask-conical": "FlaskConical", "test-tubes": "TestTubes", zap: "Zap", sparkles: "Sparkles", trophy: "Trophy" };
-  const C = Icons[map[name]] || Icons.Atom;
+  const C = ICON_MAP[name] || Atom;
   return <C className={className} />;
 }
 
@@ -23,7 +23,7 @@ export default function Home() {
       {/* HERO — 3D chemistry lab */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 md:left-[42%]">
-          <Canvas camera={{ position: [0, 1.6, 6.5], fov: 46 }} dpr={[1, 2]} gl={{ antialias: true, localClippingEnabled: true }}>
+          <Canvas camera={{ position: [0, 1.6, 6.5], fov: 46 }} dpr={1} gl={{ antialias: false, powerPreference: "low-power" }}>
             <Suspense fallback={null}>
               <LabScene />
               <OrbitControls enableZoom={false} enablePan={false} target={[0, 0.9, 0]} minPolarAngle={Math.PI / 3.2} maxPolarAngle={Math.PI / 2.05} />
@@ -56,7 +56,7 @@ export default function Home() {
                 data-testid="hero-cta-primary"
                 className="px-7 py-3.5 rounded-full font-semibold bg-[var(--cyan)] text-black hover:glow-cyan transition-all inline-flex items-center gap-2"
               >
-                Enter the Lab <Icons.ArrowRight className="w-4 h-4" />
+                Enter the Lab <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/periodic-galaxy"

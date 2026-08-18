@@ -15,13 +15,13 @@ function ElectronShell({ radius, count, speed, tilt, color }) {
     <group rotation={[tilt, tilt * 0.6, 0]}>
       {/* orbit ring */}
       <mesh>
-        <torusGeometry args={[radius, 0.012, 16, 100]} />
+        <torusGeometry args={[radius, 0.012, 8, 48]} />
         <meshBasicMaterial color={color} transparent opacity={0.28} />
       </mesh>
       <group ref={group}>
         {electrons.map((a, i) => (
           <mesh key={i} position={[Math.cos(a) * radius, Math.sin(a) * radius, 0]}>
-            <sphereGeometry args={[0.09, 16, 16]} />
+            <sphereGeometry args={[0.09, 8, 8]} />
             <meshStandardMaterial color={color} emissive={color} emissiveIntensity={2.2} />
           </mesh>
         ))}
@@ -42,11 +42,11 @@ export default function Atom3D({ shells = [2], color = "#7CFF3C", nucleusScale =
       <pointLight position={[-6, -4, -4]} intensity={60} color="#B026FF" />
       {/* nucleus */}
       <mesh ref={nucleus} scale={nucleusScale}>
-        <icosahedronGeometry args={[0.55, 2]} />
+        <icosahedronGeometry args={[0.55, 1]} />
         <meshStandardMaterial color={color} emissive={color} emissiveIntensity={1.4} roughness={0.3} metalness={0.4} />
       </mesh>
       <mesh scale={nucleusScale}>
-        <sphereGeometry args={[0.8, 24, 24]} />
+        <sphereGeometry args={[0.8, 12, 12]} />
         <meshBasicMaterial color={color} transparent opacity={0.08} />
       </mesh>
       {shells.map((count, i) => (

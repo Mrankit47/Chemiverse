@@ -26,7 +26,7 @@ function Bond({ start, end, order }) {
     <group position={mid} quaternion={quat}>
       {offsets.map((o, i) => (
         <mesh key={i} position={[o, 0, 0]}>
-          <cylinderGeometry args={[0.055, 0.055, len, 16]} />
+          <cylinderGeometry args={[0.055, 0.055, len, 8]} />
           <meshStandardMaterial color="#8ea0c4" roughness={0.4} metalness={0.3} />
         </mesh>
       ))}
@@ -49,7 +49,7 @@ export default function Molecule3D({ molecule, autoRotate = true }) {
         const style = ATOM_STYLE[a.el] || { color: "#94a3b8", r: 0.5 };
         return (
           <mesh key={i} position={a.pos}>
-            <sphereGeometry args={[style.r, 32, 32]} />
+            <sphereGeometry args={[style.r, 16, 16]} />
             <meshStandardMaterial color={style.color} roughness={0.25} metalness={0.35} emissive={style.color} emissiveIntensity={0.15} />
           </mesh>
         );

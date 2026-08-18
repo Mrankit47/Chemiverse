@@ -29,7 +29,7 @@ export default function AtomViewer() {
               {el.number} protons · {el.number} electrons
             </div>
           </div>
-          <Canvas camera={{ position: [0, 0, 9], fov: 50 }} dpr={[1, 2]}>
+          <Canvas camera={{ position: [0, 0, 9], fov: 50 }} dpr={1} gl={{ antialias: false, powerPreference: "low-power" }}>
             <Suspense fallback={null}>
               <Atom3D shells={el.shells} color={color} />
               <OrbitControls enableZoom enablePan={false} autoRotate autoRotateSpeed={0.4} />

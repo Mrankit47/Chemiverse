@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 import PageShell from "@/components/PageShell";
 import elements from "@/data/elements.json";
@@ -72,12 +71,11 @@ export default function PeriodicGalaxy() {
             const color = CATEGORY_COLORS[e.category];
             const dim = isDim(e);
             return (
-              <motion.button
+              <button
                 key={e.number}
                 data-testid={`element-${e.symbol}`}
                 onClick={() => nav(`/element/${e.number}`)}
-                whileHover={{ scale: 1.12, zIndex: 5 }}
-                className="relative aspect-square rounded-md flex flex-col items-center justify-center transition-opacity"
+                className="relative aspect-square rounded-md flex flex-col items-center justify-center transition-all duration-200 hover:scale-110 hover:z-10"
                 style={{
                   gridColumn: e.col,
                   gridRow: e.row,
@@ -94,7 +92,7 @@ export default function PeriodicGalaxy() {
                 <span className="text-[6px] md:text-[7px] text-[var(--muted)] truncate w-full text-center px-0.5 hidden md:block">
                   {e.name}
                 </span>
-              </motion.button>
+              </button>
             );
           })}
         </div>

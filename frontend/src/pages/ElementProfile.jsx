@@ -47,7 +47,7 @@ export default function ElementProfile() {
             <div className="font-display font-extrabold text-7xl" style={{ color }}>{el.symbol}</div>
             <div className="text-[var(--muted)] text-sm">Bohr model · {el.shells.join(", ")}</div>
           </div>
-          <Canvas camera={{ position: [0, 0, 8], fov: 50 }} dpr={[1, 2]}>
+          <Canvas camera={{ position: [0, 0, 8], fov: 50 }} dpr={1} gl={{ antialias: false, powerPreference: "low-power" }}>
             <Suspense fallback={null}>
               <Atom3D shells={el.shells} color={color} />
               <OrbitControls enableZoom enablePan={false} autoRotate autoRotateSpeed={0.5} />

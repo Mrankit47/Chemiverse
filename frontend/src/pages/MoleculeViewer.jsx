@@ -46,7 +46,7 @@ export default function MoleculeViewer() {
               <div className="font-mono text-xl text-[var(--orange)]">{mol.formula}</div>
               <span className="inline-block mt-2 px-3 py-1 rounded-full text-xs glass">{mol.category}</span>
             </div>
-            <Canvas camera={{ position: [0, 0, 7], fov: 50 }} dpr={[1, 2]}>
+            <Canvas camera={{ position: [0, 0, 7], fov: 50 }} dpr={1} gl={{ antialias: false, powerPreference: "low-power" }}>
               <Suspense fallback={null}>
                 <Molecule3D molecule={mol} />
                 <OrbitControls enableZoom enablePan={false} />
