@@ -5,16 +5,16 @@ import { MODULES } from "@/data/chem";
 
 export default function Footer() {
   return (
-    <footer data-testid="main-footer" className="relative border-t border-[var(--border)] mt-24">
-      <div className="max-w-7xl mx-auto px-5 py-14 grid gap-10 md:grid-cols-4">
-        <div className="md:col-span-2">
+    <footer data-testid="main-footer" className="relative border-t border-[var(--border)] mt-16 sm:mt-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-14 grid gap-8 sm:gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+        <div className="sm:col-span-2">
           <div className="flex items-center gap-2 mb-4">
             <Atom className="w-7 h-7 text-[var(--cyan)]" />
             <span className="font-display font-extrabold text-xl">
               Chemi<span className="grad-text">Verse</span>
             </span>
           </div>
-          <p className="text-[var(--muted)] max-w-sm leading-relaxed">
+          <p className="text-[var(--muted)] max-w-sm text-sm sm:text-base leading-relaxed">
             An immersive 3D chemistry universe — explore atoms, molecules and reactions
             through cinematic, interactive simulations.
           </p>
