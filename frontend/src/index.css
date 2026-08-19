@@ -123,3 +123,26 @@ h1, h2, h3, h4, .font-display { font-family: 'Sora', 'Space Grotesk', sans-serif
 .prose-chem blockquote { border-left: 3px solid var(--cyan); padding-left: 0.8rem; color: var(--muted); margin: 0.5rem 0; }
 .prose-chem h1, .prose-chem h2, .prose-chem h3 { font-size: 1.05rem; margin: 0.6rem 0 0.3rem; }
 .prose-chem a { color: var(--cyan); }
+
+/* Mobile Utilities */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.touch-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 640px) {
+  .scene-bg {
+    opacity: 0.65;
+  }
+}

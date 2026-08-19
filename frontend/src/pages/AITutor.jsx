@@ -7,8 +7,8 @@ import { API, getUserId } from "@/lib/progress";
 
 const SUGGESTIONS = [
   "Explain the octet rule simply",
-  "What is the difference between ionic and covalent bonds?",
-  "How does the periodic table organize elements?",
+  "Difference between ionic and covalent bonds?",
+  "How does periodic table organize elements?",
   "Why is water a polar molecule?",
 ];
 
@@ -76,21 +76,21 @@ export default function AITutor() {
   return (
     <PageShell testId="ai-tutor-page" title="AI Tutor" subtitle="ChemiBot answers your chemistry questions in real time." accent="#3FA9FF">
       <div className="max-w-3xl mx-auto">
-        <div ref={scrollRef} data-testid="chat-window" className="glass rounded-3xl p-6 h-[52vh] overflow-y-auto space-y-5">
+        <div ref={scrollRef} data-testid="chat-window" className="glass rounded-3xl p-4 sm:p-6 h-[56vh] sm:h-[52vh] overflow-y-auto space-y-4 sm:space-y-5 touch-scroll">
           {messages.map((m, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className={`flex gap-3 ${m.role === "user" ? "flex-row-reverse" : ""}`}
+              className={`flex gap-2.5 sm:gap-3 ${m.role === "user" ? "flex-row-reverse" : ""}`}
             >
-              <div className={`w-9 h-9 rounded-full grid place-items-center shrink-0 ${m.role === "user" ? "bg-[var(--purple)]/20" : "bg-[var(--cyan)]/20"}`}>
+              <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full grid place-items-center shrink-0 ${m.role === "user" ? "bg-[var(--purple)]/20" : "bg-[var(--cyan)]/20"}`}>
                 {m.role === "user" ? <User className="w-4 h-4 text-[var(--purple)]" /> : <Sparkles className="w-4 h-4 text-[var(--cyan)]" />}
               </div>
               <div
                 data-testid={`chat-msg-${m.role}`}
-                className={`px-4 py-3 rounded-2xl max-w-[80%] leading-relaxed prose-chem ${
-                  m.role === "user" ? "bg-[var(--purple)]/15" : "bg-white/5"
+                className={`px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-2xl max-w-[88%] sm:max-w-[80%] leading-relaxed prose-chem text-sm sm:text-base ${
+                  m.role === "user" ? "bg-[var(--purple)]/15 border border-[var(--purple)]/30" : "bg-white/5 border border-white/10"
                 }`}
               >
                 {m.content ? (
@@ -100,7 +100,7 @@ export default function AITutor() {
                     <span className="whitespace-pre-wrap">{m.content}</span>
                   )
                 ) : (
-                  loading && i === messages.length - 1 ? <span className="opacity-60">ChemiBot is thinking…</span> : ""
+                  loading && i === messages.length - 1 ? <span className="opacity-60 text-xs sm:text-sm">ChemiBot is thinking…</span> : ""
                 )}
               </div>
             </motion.div>
@@ -108,31 +108,36 @@ export default function AITutor() {
         </div>
 
         {messages.length <= 1 && (
-          <div className="flex flex-wrap gap-2 mt-4">
+          <div className="flex gap-2 mt-3 sm:mt-4 overflow-x-auto no-scrollbar py-1 touch-scroll">
             {SUGGESTIONS.map((s) => (
-              <button key={s} data-testid="chat-suggestion" onClick={() => send(s)} className="px-4 py-2 rounded-full text-sm glass hover:border-[var(--cyan)] text-[var(--muted)] hover:text-white transition-all">
+              <button
+                key={s}
+                data-testid="chat-suggestion"
+                onClick={() => send(s)}
+                className="px-3.5 py-1.5 rounded-full text-xs sm:text-sm glass hover:border-[var(--cyan)] text-[var(--muted)] hover:text-white transition-all whitespace-nowrap shrink-0 cursor-pointer"
+              >
                 {s}
               </button>
             ))}
           </div>
         )}
 
-        <div className="flex gap-3 mt-4">
+        <div className="flex gap-2 sm:gap-3 mt-3 sm:mt-4">
           <input
             data-testid="chat-input"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && send()}
             placeholder="Ask ChemiBot a chemistry question…"
-            className="flex-1 glass rounded-full px-5 py-3.5 outline-none focus:border-[var(--cyan)]"
+            className="flex-1 glass rounded-full px-4 sm:px-5 py-3 sm:py-3.5 text-sm sm:text-base outline-none focus:border-[var(--cyan)] transition-colors"
           />
           <button
             data-testid="chat-send"
             onClick={() => send()}
-            disabled={loading}
-            className="w-14 h-14 rounded-full grid place-items-center bg-[var(--cyan)] text-black hover:glow-cyan transition-all disabled:opacity-50"
+            disabled={loading || !input.trim()}
+            className="w-12 h-12 sm:w-14 sm:h-14 rounded-full grid place-items-center bg-[var(--cyan)] text-black hover:glow-cyan transition-all disabled:opacity-40 shrink-0 cursor-pointer"
           >
-            <Send className="w-5 h-5" />
+            <Send className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
         </div>
       </div>
