@@ -1,0 +1,25 @@
+{
+  "short_name": "ChemiVerse",
+  "name": "ChemiVerse — Immersive 3D Chemistry Universe",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#050816",
+  "theme_color": "#050816",
+  "display": "standalone"
+}
