@@ -1,16 +1,16 @@
 // Category colors for periodic table + atom rendering
 export const CATEGORY_COLORS = {
   alkali: "#FF9E1B",
-  alkaline: "#FFD23F",
-  transition: "#3FA9FF",
-  "post-transition": "#1FE3C2",
-  metalloid: "#B026FF",
-  nonmetal: "#7CFF3C",
-  halogen: "#c8ff4d",
-  noble: "#FF3FA4",
-  lanthanide: "#c084fc",
-  actinide: "#f0728c",
-  unknown: "#7d8f83",
+  alkaline: "#FFE600",
+  transition: "#00BFFF",
+  "post-transition": "#00F5FF",
+  metalloid: "#8B5CF6",
+  nonmetal: "#00FF9C",
+  halogen: "#A3E635",
+  noble: "#FF3864",
+  lanthanide: "#C084FC",
+  actinide: "#F43F5E",
+  unknown: "#64748B",
 };
 
 export const CATEGORY_LABELS = {
@@ -29,15 +29,15 @@ export const CATEGORY_LABELS = {
 
 // CPK-style atom colors + radii for molecule rendering
 export const ATOM_STYLE = {
-  H: { color: "#e8eefc", r: 0.30 },
-  C: { color: "#2b2b33", r: 0.52 },
-  O: { color: "#ff4d4d", r: 0.48 },
-  N: { color: "#3b6bff", r: 0.50 },
-  Cl: { color: "#4ade80", r: 0.58 },
-  Na: { color: "#8A2BE2", r: 0.62 },
-  S: { color: "#facc15", r: 0.56 },
-  P: { color: "#FF6B00", r: 0.56 },
-  F: { color: "#7df9a8", r: 0.42 },
+  H: { color: "#E6F7FF", r: 0.30 },
+  C: { color: "#00BFFF", r: 0.52 },
+  O: { color: "#FF3864", r: 0.48 },
+  N: { color: "#8B5CF6", r: 0.50 },
+  Cl: { color: "#00FF9C", r: 0.58 },
+  Na: { color: "#8B5CF6", r: 0.62 },
+  S: { color: "#FFE600", r: 0.56 },
+  P: { color: "#FF9E1B", r: 0.56 },
+  F: { color: "#00F5FF", r: 0.42 },
 };
 
 // Extra descriptive info for notable elements (fallback text generated otherwise)
@@ -222,12 +222,12 @@ export const QUIZ = [
 
 // Module registry used by the home grid + dashboard
 export const MODULES = [
-  { id: "periodic", title: "Periodic Galaxy", path: "/periodic-galaxy", icon: "atom", desc: "118 elements as glowing planets. Click any to open its 3D profile.", accent: "#7CFF3C" },
-  { id: "atom", title: "Atom Viewer", path: "/atom-viewer", icon: "orbit", desc: "Explore atomic structure with animated electron shells in 3D.", accent: "#B026FF" },
-  { id: "molecule", title: "Molecule Viewer", path: "/molecule-viewer", icon: "hexagon", desc: "Rotate ball-and-stick models of real molecules.", accent: "#FF9E1B" },
-  { id: "reaction", title: "Reaction Simulator", path: "/reaction-simulator", icon: "flask-conical", desc: "Watch reactants transform into products with energy flow.", accent: "#1FE3C2" },
-  { id: "lab", title: "Virtual Lab", path: "/virtual-lab", icon: "test-tubes", desc: "Mix reagents and observe color changes safely.", accent: "#FF3FA4" },
-  { id: "quiz", title: "Quiz Arena", path: "/quiz", icon: "zap", desc: "Test your chemistry knowledge and earn XP.", accent: "#FFD23F" },
-  { id: "tutor", title: "AI Tutor", path: "/ai-tutor", icon: "sparkles", desc: "Ask ChemiBot anything about chemistry, 24/7.", accent: "#3FA9FF" },
-  { id: "dashboard", title: "Progress Hub", path: "/dashboard", icon: "trophy", desc: "Track XP, achievements and completed modules.", accent: "#B026FF" },
+  { id: "periodic", title: "Periodic Galaxy", path: "/periodic-galaxy", icon: "atom", desc: "118 elements as glowing planets. Click any to open its 3D profile.", accent: "#00F5FF" },
+  { id: "atom", title: "Atom Viewer", path: "/atom-viewer", icon: "orbit", desc: "Explore atomic structure with animated electron shells in 3D.", accent: "#8B5CF6" },
+  { id: "molecule", title: "Molecule Viewer", path: "/molecule-viewer", icon: "hexagon", desc: "Rotate ball-and-stick models of real molecules.", accent: "#00BFFF" },
+  { id: "reaction", title: "Reaction Simulator", path: "/reaction-simulator", icon: "flask-conical", desc: "Watch reactants transform into products with energy flow.", accent: "#00FF9C" },
+  { id: "lab", title: "Virtual Lab", path: "/virtual-lab", icon: "test-tubes", desc: "Mix reagents and observe color changes safely.", accent: "#FF3864" },
+  { id: "quiz", title: "Quiz Arena", path: "/quiz", icon: "zap", desc: "Test your chemistry knowledge and earn XP.", accent: "#FFE600" },
+  { id: "tutor", title: "AI Tutor", path: "/ai-tutor", icon: "sparkles", desc: "Ask ChemiBot anything about chemistry, 24/7.", accent: "#00F5FF" },
+  { id: "dashboard", title: "Progress Hub", path: "/dashboard", icon: "trophy", desc: "Track XP, achievements and completed modules.", accent: "#8B5CF6" },
 ];

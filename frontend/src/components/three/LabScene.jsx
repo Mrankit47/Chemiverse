@@ -83,15 +83,15 @@ function Flask({ type, color, position = [0, 0, 0], fill = 0.8, scale = 1 }) {
 }
 
 const FLASKS = [
-  { type: "erlenmeyer", color: "#8CFF3B", position: [-2.6, 0, 0.3], fill: 0.95, scale: 1.05 },
-  { type: "florence", color: "#FF7A1A", position: [-0.95, 0, -0.35], fill: 0.55, scale: 0.95 },
-  { type: "florence", color: "#B026FF", position: [0.75, 0, 0.25], fill: 0.75, scale: 1.12 },
-  { type: "beaker", color: "#1FE3C2", position: [2.55, 0, -0.2], fill: 0.85, scale: 1.15 },
+  { type: "erlenmeyer", color: "#00F5FF", position: [-2.6, 0, 0.3], fill: 0.95, scale: 1.05 },
+  { type: "florence", color: "#00BFFF", position: [-0.95, 0, -0.35], fill: 0.60, scale: 0.98 },
+  { type: "florence", color: "#8B5CF6", position: [0.75, 0, 0.25], fill: 0.75, scale: 1.12 },
+  { type: "beaker", color: "#00FF9C", position: [2.55, 0, -0.2], fill: 0.85, scale: 1.15 },
 ];
 
 const TUBES = [
-  { color: "#FF3FA4", x: -0.05 },
-  { color: "#3FA9FF", x: 0.32 },
+  { color: "#FF3864", x: -0.05 },
+  { color: "#FFE600", x: 0.32 },
 ];
 
 export default function LabScene() {
@@ -99,28 +99,28 @@ export default function LabScene() {
   useFrame((state) => {
     if (group.current) {
       const t = state.clock.elapsedTime;
-      group.current.rotation.y = Math.sin(t * 0.15) * 0.28;
+      group.current.rotation.y = Math.sin(t * 0.15) * 0.25;
       group.current.position.y = Math.sin(t * 0.5) * 0.04 - 0.9;
     }
   });
 
   return (
     <group ref={group}>
-      <ambientLight intensity={0.28} />
-      <directionalLight position={[3, 6, 4]} intensity={0.5} />
-      <spotLight position={[0, 8, 3]} angle={0.5} penumbra={0.8} intensity={0.6} color="#cfeee0" />
+      <ambientLight intensity={0.32} />
+      <directionalLight position={[3, 6, 4]} intensity={0.65} color="#E6F7FF" />
+      <spotLight position={[0, 8, 3]} angle={0.5} penumbra={0.8} intensity={0.8} color="#00F5FF" />
 
-      {/* dark lab bench */}
+      {/* Futuristic lab workstation bench */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
         <planeGeometry args={[26, 12]} />
-        <meshStandardMaterial color="#0a0f0c" roughness={0.55} metalness={0.35} />
+        <meshStandardMaterial color="#080D1C" roughness={0.45} metalness={0.55} />
       </mesh>
 
       {FLASKS.map((f, i) => (
         <Flask key={i} {...f} />
       ))}
 
-      {/* small test-tube rack */}
+      {/* test-tube rack */}
       <group position={[3.7, 0, 0.5]} scale={0.85}>
         {TUBES.map((t, i) => (
           <Flask key={i} type="tube" color={t.color} position={[t.x, 0, 0]} fill={1.1} scale={1} />
@@ -128,7 +128,7 @@ export default function LabScene() {
       </group>
 
       {/* ambient floating lab particles */}
-      <Sparkles count={16} scale={[12, 5, 5]} position={[0, 2.5, 0]} size={2} speed={0.25} color="#7CFF3C" opacity={0.4} />
+      <Sparkles count={18} scale={[12, 5, 5]} position={[0, 2.5, 0]} size={2} speed={0.25} color="#00F5FF" opacity={0.5} />
     </group>
   );
 }

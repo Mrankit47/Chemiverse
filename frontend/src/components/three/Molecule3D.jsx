@@ -26,8 +26,8 @@ function Bond({ start, end, order }) {
     <group position={mid} quaternion={quat}>
       {offsets.map((o, i) => (
         <mesh key={i} position={[o, 0, 0]}>
-          <cylinderGeometry args={[0.055, 0.055, len, 8]} />
-          <meshStandardMaterial color="#8ea0c4" roughness={0.4} metalness={0.3} />
+          <cylinderGeometry args={[0.055, 0.055, len, 12]} />
+          <meshStandardMaterial color="#A5B4FC" roughness={0.25} metalness={0.65} />
         </mesh>
       ))}
     </group>
@@ -42,15 +42,15 @@ export default function Molecule3D({ molecule, autoRotate = true }) {
   if (!molecule) return null;
   return (
     <group ref={group}>
-      <ambientLight intensity={0.7} />
-      <pointLight position={[8, 8, 8]} intensity={160} />
-      <pointLight position={[-8, -6, -4]} intensity={70} color="#B026FF" />
+      <ambientLight intensity={0.75} />
+      <pointLight position={[8, 8, 8]} intensity={180} color="#00F5FF" />
+      <pointLight position={[-8, -6, -4]} intensity={80} color="#8B5CF6" />
       {molecule.atoms.map((a, i) => {
-        const style = ATOM_STYLE[a.el] || { color: "#94a3b8", r: 0.5 };
+        const style = ATOM_STYLE[a.el] || { color: "#7C91A8", r: 0.5 };
         return (
           <mesh key={i} position={a.pos}>
-            <sphereGeometry args={[style.r, 16, 16]} />
-            <meshStandardMaterial color={style.color} roughness={0.25} metalness={0.35} emissive={style.color} emissiveIntensity={0.15} />
+            <sphereGeometry args={[style.r, 24, 24]} />
+            <meshStandardMaterial color={style.color} roughness={0.2} metalness={0.4} emissive={style.color} emissiveIntensity={0.25} />
           </mesh>
         );
       })}
