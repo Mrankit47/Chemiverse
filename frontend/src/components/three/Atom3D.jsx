@@ -30,24 +30,24 @@ function ElectronShell({ radius, count, speed, tilt, color }) {
   );
 }
 
-export default function Atom3D({ shells = [2], color = "#7CFF3C", nucleusScale = 1 }) {
+export default function Atom3D({ shells = [2], color = "#00F5FF", nucleusScale = 1 }) {
   const nucleus = useRef();
   useFrame((_, dt) => {
     if (nucleus.current) nucleus.current.rotation.y += dt * 0.4;
   });
   return (
     <group>
-      <ambientLight intensity={0.6} />
-      <pointLight position={[6, 6, 6]} intensity={120} color={color} />
-      <pointLight position={[-6, -4, -4]} intensity={60} color="#B026FF" />
+      <ambientLight intensity={0.65} />
+      <pointLight position={[6, 6, 6]} intensity={130} color={color} />
+      <pointLight position={[-6, -4, -4]} intensity={70} color="#8B5CF6" />
       {/* nucleus */}
       <mesh ref={nucleus} scale={nucleusScale}>
         <icosahedronGeometry args={[0.55, 1]} />
-        <meshStandardMaterial color={color} emissive={color} emissiveIntensity={1.4} roughness={0.3} metalness={0.4} />
+        <meshStandardMaterial color={color} emissive={color} emissiveIntensity={1.8} roughness={0.25} metalness={0.5} />
       </mesh>
       <mesh scale={nucleusScale}>
-        <sphereGeometry args={[0.8, 12, 12]} />
-        <meshBasicMaterial color={color} transparent opacity={0.08} />
+        <sphereGeometry args={[0.82, 16, 16]} />
+        <meshBasicMaterial color={color} transparent opacity={0.12} />
       </mesh>
       {shells.map((count, i) => (
         <ElectronShell

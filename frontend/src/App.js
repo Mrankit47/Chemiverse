@@ -17,10 +17,24 @@ const Dashboard = lazy(() => import("@/pages/Dashboard"));
 
 function PageLoader() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="flex flex-col items-center gap-4">
-        <div className="w-10 h-10 border-2 border-[var(--cyan)] border-t-transparent rounded-full animate-spin" />
-        <span className="text-[var(--muted)] text-sm font-mono">Loading module…</span>
+    <div className="min-h-screen flex items-center justify-center bg-[#050816] px-4">
+      <div className="glass-bright rounded-2xl p-6 sm:p-8 max-w-sm w-full border border-[rgba(0,245,255,0.25)] shadow-[0_0_40px_rgba(0,191,255,0.15)] flex flex-col items-center gap-5 text-center">
+        <div className="relative w-14 h-14">
+          <div className="absolute inset-0 border-2 border-[var(--cyan)]/20 rounded-full" />
+          <div className="absolute inset-0 border-2 border-[var(--cyan)] border-t-transparent rounded-full animate-spin shadow-[0_0_15px_var(--cyan)]" />
+          <div className="absolute inset-2 border border-[var(--electric-blue)]/40 border-b-transparent rounded-full animate-spin [animation-duration:1.5s] [animation-direction:reverse]" />
+        </div>
+        <div className="space-y-1.5 font-mono">
+          <div className="text-xs font-semibold text-[var(--cyan)] tracking-wider">
+            ANALYZING MOLECULAR STRUCTURE...
+          </div>
+          <div className="text-[11px] text-[var(--muted)]">
+            INITIALIZING WORKSTATION // LAB-CORE
+          </div>
+        </div>
+        <div className="w-full bg-white/5 h-1.5 rounded-full overflow-hidden border border-[rgba(0,245,255,0.1)]">
+          <div className="h-full bg-gradient-to-r from-[var(--cyan)] to-[var(--electric-blue)] w-3/4 animate-pulse rounded-full" />
+        </div>
       </div>
     </div>
   );

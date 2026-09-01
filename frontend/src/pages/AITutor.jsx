@@ -74,23 +74,52 @@ export default function AITutor() {
   };
 
   return (
-    <PageShell testId="ai-tutor-page" title="AI Tutor" subtitle="ChemiBot answers your chemistry questions in real time." accent="#3FA9FF">
+    <PageShell
+      testId="ai-tutor-page"
+      title="AI Research Tutor"
+      subtitle="ChemiBot Neural Assistant. Specialized computational chemistry model trained on reaction mechanisms, quantum orbitals, stoichiometry, and chemical nomenclature."
+      accent="#00F5FF"
+    >
       <div className="max-w-3xl mx-auto">
-        <div ref={scrollRef} data-testid="chat-window" className="glass rounded-3xl p-4 sm:p-6 h-[56vh] sm:h-[52vh] overflow-y-auto space-y-4 sm:space-y-5 touch-scroll">
+        {/* Terminal Header Bar */}
+        <div className="glass rounded-t-3xl px-5 py-3 border border-[rgba(0,245,255,0.2)] border-b-0 flex items-center justify-between font-mono text-[11px] text-[var(--muted)]">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[var(--green)] pulsering" />
+            <span className="text-[#E6F7FF] font-semibold">CHEMIBOT NEURAL CORE // V3.2</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="text-[var(--cyan)]">STREAM: ACTIVE</span>
+            <span className="opacity-40">|</span>
+            <span className="hidden sm:inline">TEMP: 0.3</span>
+          </div>
+        </div>
+
+        {/* Chat Stream Window */}
+        <div
+          ref={scrollRef}
+          data-testid="chat-window"
+          className="glass rounded-b-3xl p-4 sm:p-6 h-[54vh] sm:h-[50vh] overflow-y-auto space-y-4 sm:space-y-5 touch-scroll border border-[rgba(0,245,255,0.18)] shadow-[0_8px_32px_rgba(5,8,22,0.6)]"
+        >
           {messages.map((m, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className={`flex gap-2.5 sm:gap-3 ${m.role === "user" ? "flex-row-reverse" : ""}`}
+              className={`flex gap-3 ${m.role === "user" ? "flex-row-reverse" : ""}`}
             >
-              <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full grid place-items-center shrink-0 ${m.role === "user" ? "bg-[var(--purple)]/20" : "bg-[var(--cyan)]/20"}`}>
-                {m.role === "user" ? <User className="w-4 h-4 text-[var(--purple)]" /> : <Sparkles className="w-4 h-4 text-[var(--cyan)]" />}
+              <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl grid place-items-center shrink-0 border ${
+                m.role === "user"
+                  ? "bg-[rgba(139,92,246,0.2)] border-[rgba(139,92,246,0.4)] text-[var(--purple)]"
+                  : "bg-[rgba(0,245,255,0.15)] border-[rgba(0,245,255,0.4)] text-[var(--cyan)] shadow-[0_0_12px_rgba(0,245,255,0.2)]"
+              }`}>
+                {m.role === "user" ? <User className="w-4 h-4" /> : <Sparkles className="w-4 h-4" />}
               </div>
               <div
                 data-testid={`chat-msg-${m.role}`}
-                className={`px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-2xl max-w-[88%] sm:max-w-[80%] leading-relaxed prose-chem text-sm sm:text-base ${
-                  m.role === "user" ? "bg-[var(--purple)]/15 border border-[var(--purple)]/30" : "bg-white/5 border border-white/10"
+                className={`px-4 py-3 rounded-2xl max-w-[88%] sm:max-w-[82%] leading-relaxed prose-chem text-xs sm:text-sm font-sans border ${
+                  m.role === "user"
+                    ? "bg-[rgba(139,92,246,0.14)] border-[rgba(139,92,246,0.3)] text-[#E6F7FF]"
+                    : "glass border-[rgba(0,245,255,0.15)] text-[#E6F7FF] shadow-[0_2px_12px_rgba(5,8,22,0.4)]"
                 }`}
               >
                 {m.content ? (
@@ -100,13 +129,19 @@ export default function AITutor() {
                     <span className="whitespace-pre-wrap">{m.content}</span>
                   )
                 ) : (
-                  loading && i === messages.length - 1 ? <span className="opacity-60 text-xs sm:text-sm">ChemiBot is thinking…</span> : ""
+                  loading && i === messages.length - 1 ? (
+                    <span className="font-mono text-xs text-[var(--cyan)] flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--cyan)] animate-ping" />
+                      CHEMIBOT IS SYNTHESIZING RESPONSE...
+                    </span>
+                  ) : ""
                 )}
               </div>
             </motion.div>
           ))}
         </div>
 
+        {/* Suggestion Chips */}
         {messages.length <= 1 && (
           <div className="flex gap-2 mt-3 sm:mt-4 overflow-x-auto no-scrollbar py-1 touch-scroll">
             {SUGGESTIONS.map((s) => (
@@ -114,28 +149,29 @@ export default function AITutor() {
                 key={s}
                 data-testid="chat-suggestion"
                 onClick={() => send(s)}
-                className="px-3.5 py-1.5 rounded-full text-xs sm:text-sm glass hover:border-[var(--cyan)] text-[var(--muted)] hover:text-white transition-all whitespace-nowrap shrink-0 cursor-pointer"
+                className="px-3.5 py-1.5 rounded-full text-xs font-mono glass hover:border-[var(--cyan)] text-[var(--muted)] hover:text-[#E6F7FF] transition-all whitespace-nowrap shrink-0 cursor-pointer border border-[rgba(0,245,255,0.14)] hover:bg-white/5"
               >
-                {s}
+                › {s}
               </button>
             ))}
           </div>
         )}
 
+        {/* Command Input Box */}
         <div className="flex gap-2 sm:gap-3 mt-3 sm:mt-4">
           <input
             data-testid="chat-input"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && send()}
-            placeholder="Ask ChemiBot a chemistry question…"
-            className="flex-1 glass rounded-full px-4 sm:px-5 py-3 sm:py-3.5 text-sm sm:text-base outline-none focus:border-[var(--cyan)] transition-colors"
+            placeholder="Inquire on reactions, molecular geometry, or electron configuration…"
+            className="flex-1 glass rounded-full px-5 py-3.5 text-xs sm:text-sm font-mono text-[#E6F7FF] placeholder-[var(--muted)] outline-none border border-[rgba(0,245,255,0.2)] focus:border-[var(--cyan)] focus:shadow-[0_0_20px_rgba(0,245,255,0.25)] transition-all"
           />
           <button
             data-testid="chat-send"
             onClick={() => send()}
             disabled={loading || !input.trim()}
-            className="w-12 h-12 sm:w-14 sm:h-14 rounded-full grid place-items-center bg-[var(--cyan)] text-black hover:glow-cyan transition-all disabled:opacity-40 shrink-0 cursor-pointer"
+            className="w-12 h-12 sm:w-14 sm:h-14 rounded-full grid place-items-center bg-[var(--cyan)] text-black hover:glow-cyan transition-all disabled:opacity-30 shrink-0 cursor-pointer shadow-[0_0_20px_rgba(0,245,255,0.3)]"
           >
             <Send className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>

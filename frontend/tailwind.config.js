@@ -15,6 +15,17 @@ module.exports = {
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        spaceNavy: '#050816',
+        spaceNavy2: '#080D1C',
+        panelDark: '#0B1224',
+        electric: '#00BFFF',
+        cyanLab: '#00F5FF',
+        purpleLab: '#8B5CF6',
+        greenLab: '#00FF9C',
+        yellowLab: '#FFE600',
+        redLab: '#FF3864',
+        textPrimary: '#E6F7FF',
+        textSecondary: '#7C91A8',
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
