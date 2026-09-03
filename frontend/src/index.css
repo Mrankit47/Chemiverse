@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Orbitron:wght@500;600;700;800;900&family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Orbitron:wght@500;600;700;800;900&family=Oxanium:wght@400;500;600;700;800;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -63,10 +63,20 @@ body {
   overflow-x: hidden;
 }
 
-/* Typography styles */
+/* Typography styles — Chemistry & Molecular Science Laboratory Aesthetic */
 h1, h2, h3, h4, .font-display {
-  font-family: 'Space Grotesk', 'Sora', sans-serif;
-  letter-spacing: -0.02em;
+  font-family: 'Oxanium', 'Space Grotesk', 'Sora', sans-serif;
+  letter-spacing: -0.015em;
+}
+
+.font-chem {
+  font-family: 'Oxanium', 'Rajdhani', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.font-lab {
+  font-family: 'Rajdhani', 'Oxanium', sans-serif;
+  letter-spacing: 0.06em;
 }
 
 .font-orbitron {
@@ -79,7 +89,57 @@ h1, h2, h3, h4, .font-display {
 }
 
 .font-mono {
-  font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', 'Share Tech Mono', monospace;
+}
+
+.font-formula {
+  font-family: 'Share Tech Mono', 'JetBrains Mono', monospace;
+  letter-spacing: 0.03em;
+}
+
+.font-chakra {
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+/* Chemistry Chemical Formula Notation & Elemental Typography */
+.chem-formula {
+  font-family: 'Share Tech Mono', 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
+  font-feature-settings: "tnum" 1;
+}
+
+.chem-formula sub,
+.chem-sub {
+  font-size: 0.72em;
+  line-height: 0;
+  vertical-align: -0.32em;
+  font-weight: 600;
+  color: var(--cyan);
+}
+
+.chem-formula sup,
+.chem-sup {
+  font-size: 0.72em;
+  line-height: 0;
+  vertical-align: 0.45em;
+  font-weight: 600;
+  color: var(--purple);
+}
+
+/* Element symbol tile typography */
+.chem-symbol {
+  font-family: 'Oxanium', 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* Scientific HUD readouts & IUPAC labels */
+.chem-tag {
+  font-family: 'Rajdhani', 'Oxanium', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
 }
 
 /* Futuristic Laboratory Background */

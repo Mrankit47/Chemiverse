@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Atom, Menu, X, Sparkles } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 import { MODULES } from "@/data/chem";
+import ChemistryLogo from "@/components/common/ChemistryLogo";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -43,16 +44,15 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         {/* Laboratory Brand Logo */}
         <Link to="/" data-testid="nav-logo" className="flex items-center gap-3 group z-50">
-          <div className="relative w-9 h-9 rounded-xl glass grid place-items-center border border-[rgba(0,245,255,0.3)] shadow-[0_0_15px_rgba(0,245,255,0.15)] group-hover:border-[var(--cyan)] transition-colors">
-            <Atom className="w-5 h-5 text-[var(--cyan)] group-hover:rotate-90 transition-transform duration-700" />
-            <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[var(--green)] pulsering" />
+          <div className="relative w-10 h-10 rounded-2xl glass grid place-items-center border border-[rgba(0,245,255,0.35)] shadow-[0_0_20px_rgba(0,245,255,0.2)] group-hover:border-[var(--cyan)] group-hover:shadow-[0_0_25px_rgba(0,245,255,0.4)] transition-all p-1 bg-gradient-to-br from-[#0B1224]/90 to-[#050816]/90">
+            <ChemistryLogo className="w-full h-full" showBadge={true} />
           </div>
           <div className="flex flex-col">
-            <span className="font-display font-extrabold text-lg sm:text-xl tracking-tight leading-none">
+            <span className="font-display font-extrabold text-xl sm:text-2xl tracking-normal leading-none text-[#E6F7FF]">
               CHEMI<span className="grad-text">VERSE</span>
             </span>
-            <span className="font-mono text-[9px] tracking-[0.2em] text-[var(--cyan)] uppercase opacity-80 mt-0.5">
-              LAB-STATION // V2.4
+            <span className="font-lab text-[10px] tracking-[0.24em] text-[var(--cyan)] uppercase font-semibold opacity-90 mt-0.5">
+              LABORATORY // V2.4
             </span>
           </div>
         </Link>
@@ -66,7 +66,7 @@ export default function Navbar() {
                 key={m.id}
                 to={m.path}
                 data-testid={`nav-${m.id}`}
-                className={`relative px-3.5 py-1.5 rounded-full text-xs font-mono tracking-wide transition-all flex items-center gap-1.5 ${
+                className={`relative px-3.5 py-1.5 rounded-full text-xs font-lab uppercase tracking-wider font-semibold transition-all flex items-center gap-1.5 ${
                   active
                     ? "text-[#E6F7FF] bg-[rgba(0,245,255,0.12)] border border-[rgba(0,245,255,0.4)] shadow-[0_0_16px_rgba(0,245,255,0.2)]"
                     : "text-[var(--muted)] hover:text-[#E6F7FF] hover:bg-white/5 border border-transparent"
@@ -81,14 +81,14 @@ export default function Navbar() {
 
         {/* Action Button & Status Telemetry */}
         <div className="hidden lg:flex items-center gap-3">
-          <div className="hidden xl:flex items-center gap-2 px-3 py-1 rounded-full glass-subtle text-[10px] font-mono text-[var(--muted)] border border-[rgba(0,245,255,0.1)]">
+          <div className="hidden xl:flex items-center gap-2 px-3 py-1 rounded-full glass-subtle text-[11px] font-lab tracking-[0.16em] text-[var(--muted)] border border-[rgba(0,245,255,0.1)]">
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--green)] animate-ping" />
             <span className="text-[var(--text)]">CORE: ONLINE</span>
           </div>
           <Link
             to="/ai-tutor"
             data-testid="nav-cta"
-            className="px-4 py-2 rounded-full text-xs font-mono font-semibold bg-[rgba(0,191,255,0.15)] text-[var(--cyan)] border border-[rgba(0,245,255,0.35)] hover:bg-[var(--cyan)] hover:text-black hover:shadow-[0_0_20px_rgba(0,245,255,0.4)] transition-all inline-flex items-center gap-1.5"
+            className="px-4 py-2 rounded-full text-xs font-lab font-bold tracking-wider uppercase bg-[rgba(0,191,255,0.15)] text-[var(--cyan)] border border-[rgba(0,245,255,0.35)] hover:bg-[var(--cyan)] hover:text-black hover:shadow-[0_0_20px_rgba(0,245,255,0.4)] transition-all inline-flex items-center gap-1.5"
           >
             <Sparkles className="w-3.5 h-3.5" /> ASK CHEMIBOT
           </Link>
@@ -113,10 +113,10 @@ export default function Navbar() {
         >
           <div>
             <div className="flex items-center justify-between mb-4">
-              <span className="text-[11px] uppercase tracking-[0.2em] text-[var(--cyan)] font-mono">
+              <span className="text-xs uppercase tracking-[0.24em] text-[var(--cyan)] font-lab font-semibold">
                 LABORATORY MODULES
               </span>
-              <span className="font-mono text-[10px] text-[var(--green)]">SYS.READY</span>
+              <span className="font-lab text-xs tracking-wider text-[var(--green)] font-semibold">SYS.READY</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {MODULES.map((m) => {
@@ -127,7 +127,7 @@ export default function Navbar() {
                     to={m.path}
                     data-testid={`nav-mobile-${m.id}`}
                     onClick={() => setOpen(false)}
-                    className={`px-4 py-3.5 rounded-xl text-xs font-mono transition-all flex items-center justify-between border ${
+                    className={`px-4 py-3.5 rounded-xl text-xs font-lab uppercase tracking-wider font-medium transition-all flex items-center justify-between border ${
                       active
                         ? "border-[var(--cyan)] bg-[rgba(0,245,255,0.12)] text-white shadow-[0_0_16px_rgba(0,245,255,0.2)]"
                         : "border-[rgba(0,245,255,0.12)] glass text-[var(--muted)] hover:text-white"
@@ -152,7 +152,7 @@ export default function Navbar() {
               to="/ai-tutor"
               data-testid="nav-mobile-cta"
               onClick={() => setOpen(false)}
-              className="w-full py-3.5 rounded-full text-xs font-mono font-semibold bg-[var(--cyan)] text-black hover:glow-cyan transition-all flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(0,245,255,0.3)]"
+              className="w-full py-3.5 rounded-full text-xs font-lab font-bold tracking-wider uppercase bg-[var(--cyan)] text-black hover:glow-cyan transition-all flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(0,245,255,0.3)]"
             >
               <Sparkles className="w-4 h-4" /> LAUNCH AI RESEARCH TUTOR
             </Link>

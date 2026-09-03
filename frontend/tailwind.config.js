@@ -7,6 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        display: ['Oxanium', 'Space Grotesk', 'sans-serif'],
+        chem: ['Oxanium', 'Rajdhani', 'sans-serif'],
+        lab: ['Rajdhani', 'Oxanium', 'sans-serif'],
+        formula: ['"Share Tech Mono"', '"JetBrains Mono"', 'monospace'],
+        mono: ['"JetBrains Mono"', '"Share Tech Mono"', 'monospace'],
+        chakra: ['"Chakra Petch"', 'sans-serif'],
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
