@@ -8,7 +8,7 @@ import { addProgress } from "@/lib/progress";
 function Chip({ label, color, status }) {
   return (
     <span
-      className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl font-mono font-bold text-sm sm:text-base glass border transition-all shadow-[0_0_15px_rgba(0,0,0,0.5)]"
+      className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl font-formula chem-formula font-bold text-base sm:text-lg glass border transition-all shadow-[0_0_15px_rgba(0,0,0,0.5)]"
       style={{
         borderColor: status === "product" ? "#00FF9C" : color,
         color: status === "product" ? "#00FF9C" : "#E6F7FF",
@@ -156,7 +156,7 @@ export default function ReactionSimulator() {
 
             {/* Stoichiometric Equation Bar */}
             <div
-              className="relative w-full z-10 font-mono text-xs sm:text-base text-center px-4 py-2.5 rounded-2xl glass border border-[rgba(0,245,255,0.18)] break-words text-[#E6F7FF]"
+              className="relative w-full z-10 font-formula chem-formula font-semibold text-sm sm:text-lg text-center px-5 py-3 rounded-2xl glass border border-[rgba(0,245,255,0.22)] break-words text-[#E6F7FF] shadow-[0_0_20px_rgba(0,245,255,0.1)]"
               data-testid="reaction-equation"
             >
               {active.equation}
@@ -172,7 +172,7 @@ export default function ReactionSimulator() {
                 ) : (
                   <Snowflake className="w-4 h-4 text-[var(--cyan)]" />
                 )}
-                <span className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider" style={{ color: energyColor }}>
+                <span className="text-xs sm:text-sm font-lab font-bold uppercase tracking-wider" style={{ color: energyColor }}>
                   {active.energy} ENTHALPY
                 </span>
               </div>
@@ -184,14 +184,14 @@ export default function ReactionSimulator() {
                 data-testid="run-reaction"
                 onClick={run}
                 disabled={phase === "reacting"}
-                className="flex-1 py-3.5 rounded-2xl font-mono text-xs sm:text-sm font-semibold bg-[var(--cyan)] text-black hover:glow-cyan transition-all inline-flex items-center justify-center gap-2 disabled:opacity-40 cursor-pointer shadow-[0_0_20px_rgba(0,245,255,0.3)]"
+                className="flex-1 py-3.5 rounded-2xl font-lab text-xs sm:text-sm font-bold uppercase tracking-wider bg-[var(--cyan)] text-black hover:glow-cyan transition-all inline-flex items-center justify-center gap-2 disabled:opacity-40 cursor-pointer shadow-[0_0_20px_rgba(0,245,255,0.3)]"
               >
                 <Play className="w-4 h-4" /> IGNITE REACTION
               </button>
               <button
                 data-testid="reset-reaction"
                 onClick={reset}
-                className="sm:rounded-2xl rounded-2xl font-mono text-xs sm:text-sm font-semibold glass py-3 px-4 inline-flex items-center justify-center gap-2 hover:border-[var(--cyan)] text-[#E6F7FF] cursor-pointer border border-[rgba(0,245,255,0.2)] hover:bg-white/5"
+                className="sm:rounded-2xl rounded-2xl font-lab text-xs sm:text-sm font-bold uppercase tracking-wider glass py-3 px-4 inline-flex items-center justify-center gap-2 hover:border-[var(--cyan)] text-[#E6F7FF] cursor-pointer border border-[rgba(0,245,255,0.2)] hover:bg-white/5"
               >
                 <RotateCcw className="w-4 h-4 text-[var(--cyan)]" /> PURGE CHAMBER
               </button>

@@ -1,172 +1,135 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
   <defs>
-    <!-- Cosmic Dark Badge Gradient -->
-    <radialGradient id="bgGrad" cx="50%" cy="30%" r="75%">
+    <!-- Background Radial Gradient -->
+    <radialGradient id="favBgGrad" cx="50%" cy="35%" r="75%">
       <stop offset="0%" stop-color="#0f1b3b" />
-      <stop offset="55%" stop-color="#080e22" />
+      <stop offset="60%" stop-color="#080e22" />
       <stop offset="100%" stop-color="#030611" />
     </radialGradient>
 
-    <!-- Border Neon Gradient -->
-    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00f0ff" />
-      <stop offset="50%" stop-color="#a855f7" />
-      <stop offset="100%" stop-color="#10b981" />
+    <!-- Glowing Chemistry Gradients -->
+    <linearGradient id="favHexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F5FF" />
+      <stop offset="50%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#00FF9C" />
     </linearGradient>
 
-    <!-- Liquid Gradient (Cyan to Emerald Neon Reaction) -->
-    <linearGradient id="liquidGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00f0ff" />
-      <stop offset="45%" stop-color="#06b6d4" />
-      <stop offset="75%" stop-color="#10b981" />
-      <stop offset="100%" stop-color="#059669" />
+    <linearGradient id="favFlaskGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F5FF" />
+      <stop offset="40%" stop-color="#00BFFF" />
+      <stop offset="100%" stop-color="#8B5CF6" />
     </linearGradient>
 
-    <!-- Glass Highlights Gradient -->
-    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
-      <stop offset="30%" stop-color="#00f0ff" stop-opacity="0.8" />
-      <stop offset="70%" stop-color="#818cf8" stop-opacity="0.7" />
-      <stop offset="100%" stop-color="#a855f7" stop-opacity="0.9" />
+    <linearGradient id="favLiquidGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FF9C" />
+      <stop offset="50%" stop-color="#00F5FF" />
+      <stop offset="100%" stop-color="#00BFFF" />
     </linearGradient>
 
-    <!-- Molecular Orbit Gradient -->
-    <linearGradient id="orbitGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.9" />
-      <stop offset="50%" stop-color="#ec4899" stop-opacity="0.9" />
-      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0.9" />
-    </linearGradient>
-
-    <!-- Radial Glows -->
-    <radialGradient id="liquidAura" cx="50%" cy="70%" r="45%">
-      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.45" />
-      <stop offset="60%" stop-color="#10b981" stop-opacity="0.2" />
-      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0" />
-    </radialGradient>
-
-    <!-- Filters for Glow -->
-    <filter id="neonGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="6" result="blur" />
-      <feMerge>
-        <feMergeNode in="blur" />
-        <feMergeNode in="blur" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
-    </filter>
-
-    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3" result="blur" />
-      <feMerge>
-        <feMergeNode in="blur" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
-    </filter>
-
-    <!-- Clip Path for Liquid inside Flask -->
-    <clipPath id="flaskInnerClip">
-      <path d="M 234 135 
-               L 234 210 
-               L 142 376 
-               C 134 390 144 408 160 408 
-               L 352 408 
-               C 368 408 378 390 370 376 
-               L 278 210 
-               L 278 135 
-               Z" />
+    <!-- Liquid clip path inside flask -->
+    <clipPath id="favFlaskClip">
+      <path d="M 235 180 L 150 370 C 138 395 156 422 186 422 L 326 422 C 356 422 374 395 362 370 L 277 180 Z" />
     </clipPath>
+
+    <!-- Glow Filter -->
+    <filter id="favGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
   </defs>
 
   <!-- Container Badge -->
-  <rect x="18" y="18" width="476" height="476" rx="112" fill="url(#bgGrad)" stroke="url(#borderGrad)" stroke-width="8" />
+  <rect x="20" y="20" width="472" height="472" rx="118" fill="url(#favBgGrad)" stroke="url(#favHexGrad)" stroke-width="8" />
 
-  <!-- Ambient Reaction Aura -->
-  <ellipse cx="256" cy="340" rx="140" ry="90" fill="url(#liquidAura)" />
+  <!-- Core Ambient Glow -->
+  <circle cx="256" cy="300" r="160" fill="#00F5FF" opacity="0.18" filter="url(#favGlow)" />
 
-  <!-- Background Molecular Benzene Ring / Orbit behind flask -->
-  <g transform="rotate(-15, 256, 260)" filter="url(#softGlow)">
-    <ellipse cx="256" cy="270" rx="180" ry="60" fill="none" stroke="url(#orbitGrad)" stroke-width="10" stroke-dasharray="16 10" />
-    <!-- Orbiting atom electron / molecule node -->
-    <circle cx="436" cy="270" r="14" fill="#ffffff" />
-    <circle cx="436" cy="270" r="9" fill="#00f0ff" />
-    
-    <circle cx="76" cy="270" r="12" fill="#ffffff" />
-    <circle cx="76" cy="270" r="7" fill="#ec4899" />
+  <!-- Outer Hexagonal Benzene Ring / Carbon Ring -->
+  <polygon
+    points="256,50 435,153 435,359 256,462 77,359 77,153"
+    fill="none"
+    stroke="url(#favHexGrad)"
+    stroke-width="14"
+    stroke-linejoin="round"
+    filter="url(#favGlow)"
+  />
+
+  <!-- Delocalized Aromatic Inner Ring -->
+  <polygon
+    points="256,85 400,168 400,344 256,427 112,344 112,168"
+    fill="none"
+    stroke="rgba(0, 245, 255, 0.28)"
+    stroke-width="6"
+    stroke-dasharray="16 12"
+    stroke-linejoin="round"
+  />
+
+  <!-- Atomic Orbital Tracks -->
+  <g transform="rotate(-30, 256, 280)" filter="url(#favGlow)">
+    <ellipse cx="256" cy="280" rx="205" ry="75" fill="none" stroke="rgba(139, 92, 246, 0.7)" stroke-width="7" stroke-dasharray="18 12" />
+    <circle cx="461" cy="280" r="15" fill="#00F5FF" />
+    <circle cx="461" cy="280" r="7" fill="#FFFFFF" />
+    <circle cx="51" cy="280" r="13" fill="#8B5CF6" />
+    <circle cx="51" cy="280" r="6" fill="#FFFFFF" />
   </g>
 
-  <!-- Liquid inside Flask (clipped to flask interior) -->
-  <g clip-path="url(#flaskInnerClip)">
-    <!-- Base Liquid Body -->
-    <path d="M 120 275 Q 200 290 256 275 T 392 275 L 392 420 L 120 420 Z" fill="url(#liquidGrad)" />
-    
-    <!-- Wave surface highlight -->
-    <path d="M 120 275 Q 200 290 256 275 T 392 275" fill="none" stroke="#ffffff" stroke-width="6" opacity="0.6" />
-
-    <!-- Bubbles in Liquid -->
-    <circle cx="215" cy="350" r="14" fill="#ffffff" opacity="0.5" />
-    <circle cx="215" cy="350" r="10" fill="#00f0ff" opacity="0.8" />
-
-    <circle cx="285" cy="365" r="18" fill="#ffffff" opacity="0.4" />
-    <circle cx="285" cy="365" r="13" fill="#34d399" opacity="0.8" />
-
-    <circle cx="252" cy="315" r="10" fill="#ffffff" opacity="0.6" />
-    <circle cx="295" cy="305" r="7" fill="#ffffff" opacity="0.7" />
-    <circle cx="185" cy="375" r="8" fill="#ffffff" opacity="0.4" />
+  <g transform="rotate(35, 256, 280)" filter="url(#favGlow)">
+    <ellipse cx="256" cy="280" rx="205" ry="75" fill="none" stroke="rgba(0, 245, 255, 0.7)" stroke-width="7" stroke-dasharray="18 12" />
+    <circle cx="461" cy="280" r="15" fill="#00FF9C" />
+    <circle cx="461" cy="280" r="7" fill="#FFFFFF" />
+    <circle cx="51" cy="280" r="13" fill="#00BFFF" />
+    <circle cx="51" cy="280" r="6" fill="#FFFFFF" />
   </g>
 
-  <!-- Glass Flask Outline & Neck -->
-  <!-- Conical Body & Neck -->
-  <path d="M 230 130 
-           L 230 205 
-           L 138 374 
-           C 128 392 140 414 160 414 
-           L 352 414 
-           C 372 414 384 392 374 374 
-           L 282 205 
-           L 282 130" 
-        fill="none" 
-        stroke="url(#glassGrad)" 
-        stroke-width="16" 
-        stroke-linecap="round" 
-        stroke-linejoin="round"
-        filter="url(#neonGlow)" />
-
-  <!-- Flask Lip at Top -->
-  <rect x="214" y="114" width="84" height="18" rx="9" fill="url(#glassGrad)" filter="url(#softGlow)" />
-
-  <!-- Measurement Graduation Marks on Flask -->
-  <line x1="205" y1="265" x2="235" y2="265" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.75" />
-  <line x1="185" y1="315" x2="225" y2="315" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.75" />
-  <line x1="165" y1="365" x2="215" y2="365" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.75" />
-
-  <!-- Glass Reflective Sheen on right edge -->
-  <path d="M 270 145 L 270 200 L 348 350" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.45" />
-
-  <!-- Rising Glowing Reaction Chemistry Bubbles (Steam & Energy popping out) -->
-  <g filter="url(#neonGlow)">
-    <!-- Bubble 1 -->
-    <circle cx="256" cy="180" r="11" fill="#ffffff" />
-    <circle cx="256" cy="180" r="7" fill="#00f0ff" />
-
-    <!-- Bubble 2 (Exiting neck) -->
-    <circle cx="242" cy="135" r="9" fill="#ffffff" />
-    <circle cx="242" cy="135" r="6" fill="#34d399" />
-
-    <!-- Bubble 3 (Floating in air) -->
-    <circle cx="268" cy="88" r="14" fill="#ffffff" />
-    <circle cx="268" cy="88" r="10" fill="#00f0ff" />
-
-    <!-- Bubble 4 (Small sparkle bubble) -->
-    <circle cx="230" cy="65" r="8" fill="#ffffff" />
-    <circle cx="230" cy="65" r="5" fill="#a855f7" />
-
-    <circle cx="290" cy="55" r="6" fill="#00f0ff" />
+  <!-- Liquid inside Flask (Clipped) -->
+  <g clip-path="url(#favFlaskClip)">
+    <rect x="100" y="270" width="312" height="170" fill="url(#favLiquidGrad)" />
+    <!-- Meniscus Wave Surface -->
+    <path d="M 120 285 Q 188 265 256 285 T 392 285 L 392 430 L 120 430 Z" fill="url(#favLiquidGrad)" opacity="0.95" />
+    <path d="M 130 285 Q 193 265 256 285 T 382 285" fill="none" stroke="#FFFFFF" stroke-width="6" opacity="0.8" />
+    <!-- Reaction Bubbles -->
+    <circle cx="215" cy="360" r="12" fill="#FFFFFF" opacity="0.8" />
+    <circle cx="280" cy="340" r="16" fill="#FFFFFF" opacity="0.75" />
+    <circle cx="250" cy="385" r="9" fill="#FFFFFF" opacity="0.6" />
+    <circle cx="310" cy="375" r="10" fill="#FFFFFF" opacity="0.7" />
+    <circle cx="185" cy="335" r="8" fill="#FFFFFF" opacity="0.65" />
   </g>
 
-  <!-- Sparkle Stars for chemical magic -->
-  <!-- Sparkle 1 -->
-  <path d="M 330 95 Q 330 110 345 110 Q 330 110 330 125 Q 330 110 315 110 Q 330 110 330 95 Z" fill="#00f0ff" filter="url(#softGlow)" />
-  <!-- Sparkle 2 -->
-  <path d="M 175 160 Q 175 172 187 172 Q 175 172 175 184 Q 175 172 163 172 Q 175 172 175 160 Z" fill="#a855f7" filter="url(#softGlow)" />
-  <!-- Sparkle 3 -->
-  <path d="M 360 210 Q 360 218 368 218 Q 360 218 360 226 Q 360 218 352 218 Q 360 218 360 210 Z" fill="#34d399" filter="url(#softGlow)" />
+  <!-- Erlenmeyer Glass Flask Contour -->
+  <path
+    d="M 230 115 
+       L 230 175 
+       L 145 365 
+       C 132 392 152 425 182 425 
+       L 330 425 
+       C 360 425 380 392 367 365 
+       L 282 175 
+       L 282 115"
+    fill="none"
+    stroke="url(#favFlaskGrad)"
+    stroke-width="16"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    filter="url(#favGlow)"
+  />
+
+  <!-- Flask Rim -->
+  <rect x="215" y="102" width="82" height="18" rx="9" fill="#00F5FF" filter="url(#favGlow)" />
+
+  <!-- Measurement Graduation Marks -->
+  <line x1="245" y1="245" x2="275" y2="245" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.8" />
+  <line x1="230" y1="295" x2="270" y2="295" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.8" />
+  <line x1="210" y1="345" x2="260" y2="345" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.8" />
+
+  <!-- Glass Reflective Sheen -->
+  <path d="M 270 130 L 270 175 L 340 330" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity="0.45" />
+
+  <!-- Bubbles Escaping Neck -->
+  <circle cx="256" cy="82" r="12" fill="#00FF9C" filter="url(#favGlow)" />
+  <circle cx="245" cy="50" r="9" fill="#00F5FF" opacity="0.9" />
+  <circle cx="268" cy="28" r="7" fill="#8B5CF6" opacity="0.85" />
 </svg>

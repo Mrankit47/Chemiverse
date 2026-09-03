@@ -7,6 +7,7 @@ import { Atom, Orbit, Hexagon, FlaskConical, TestTubes, Zap, Sparkles, Trophy, A
 import LabScene from "@/components/three/LabScene";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import ChemistryLogo from "@/components/common/ChemistryLogo";
 import { MODULES } from "@/data/chem";
 
 const ICONS = {
@@ -62,8 +63,8 @@ export default function Home() {
             className="max-w-xl"
           >
             {/* Scientific HUD status badge */}
-            <div className="inline-flex items-center gap-2 font-mono text-[10px] sm:text-xs tracking-[0.2em] text-[var(--cyan)] mb-4 sm:mb-5 px-3.5 py-1.5 rounded-full glass border border-[rgba(0,245,255,0.25)] shadow-[0_0_15px_rgba(0,245,255,0.15)]">
-              <span className="w-2 h-2 rounded-full bg-[var(--cyan)] pulsering" />
+            <div className="inline-flex items-center gap-2.5 font-lab text-xs tracking-[0.22em] uppercase font-semibold text-[var(--cyan)] mb-4 sm:mb-5 px-4 py-1.5 rounded-full glass border border-[rgba(0,245,255,0.3)] shadow-[0_0_20px_rgba(0,245,255,0.18)]">
+              <ChemistryLogo className="w-5 h-5" glow={false} />
               <span>ADVANCED MOLECULAR RESEARCH LAB</span>
             </div>
 
@@ -78,14 +79,14 @@ export default function Home() {
             </p>
 
             {/* Scientific Flow Stepper: Atoms -> Molecules -> Reactions -> Discovery */}
-            <div className="flex items-center gap-1.5 sm:gap-2 my-6 sm:my-7 font-mono text-[10px] sm:text-xs text-[var(--muted)] glass-subtle px-3 sm:px-4 py-2 rounded-xl border border-[rgba(0,245,255,0.12)] w-fit flex-wrap">
-              <span className="text-[var(--cyan)] font-semibold">ATOMS</span>
+            <div className="flex items-center gap-2 sm:gap-2.5 my-6 sm:my-7 font-lab text-xs tracking-[0.16em] text-[var(--muted)] glass-subtle px-3.5 sm:px-4 py-2 rounded-xl border border-[rgba(0,245,255,0.15)] w-fit flex-wrap font-semibold">
+              <span className="text-[var(--cyan)]">ATOMS</span>
               <span className="text-[rgba(0,245,255,0.4)]">→</span>
-              <span className="text-[var(--electric-blue)] font-semibold">MOLECULES</span>
+              <span className="text-[var(--electric-blue)]">MOLECULES</span>
               <span className="text-[rgba(0,245,255,0.4)]">→</span>
-              <span className="text-[var(--green)] font-semibold">REACTIONS</span>
+              <span className="text-[var(--green)]">REACTIONS</span>
               <span className="text-[rgba(0,245,255,0.4)]">→</span>
-              <span className="text-[#E6F7FF] font-semibold">DISCOVERY</span>
+              <span className="text-[#E6F7FF]">DISCOVERY</span>
             </div>
 
             {/* Futuristic CTAs */}
@@ -93,14 +94,14 @@ export default function Home() {
               <Link
                 to="/virtual-lab"
                 data-testid="hero-cta-primary"
-                className="px-7 py-3.5 rounded-full font-mono text-xs sm:text-sm font-semibold bg-[var(--cyan)] text-black hover:glow-cyan transition-all inline-flex items-center justify-center gap-2 text-center shadow-[0_0_25px_rgba(0,245,255,0.35)]"
+                className="px-7 py-3.5 rounded-full font-lab text-xs sm:text-sm font-bold uppercase tracking-wider bg-[var(--cyan)] text-black hover:glow-cyan transition-all inline-flex items-center justify-center gap-2 text-center shadow-[0_0_25px_rgba(0,245,255,0.35)]"
               >
                 ENTER CHEMISTRY LAB <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/periodic-galaxy"
                 data-testid="hero-cta-secondary"
-                className="px-7 py-3.5 rounded-full font-mono text-xs sm:text-sm font-semibold glass border border-[rgba(0,245,255,0.25)] hover:border-[var(--cyan)] hover:bg-[rgba(0,245,255,0.08)] text-[#E6F7FF] transition-all text-center justify-center inline-flex items-center shadow-[0_0_15px_rgba(0,245,255,0.08)]"
+                className="px-7 py-3.5 rounded-full font-lab text-xs sm:text-sm font-bold uppercase tracking-wider glass border border-[rgba(0,245,255,0.25)] hover:border-[var(--cyan)] hover:bg-[rgba(0,245,255,0.08)] text-[#E6F7FF] transition-all text-center justify-center inline-flex items-center shadow-[0_0_15px_rgba(0,245,255,0.08)]"
               >
                 PERIODIC GALAXY
               </Link>
@@ -108,7 +109,7 @@ export default function Home() {
           </motion.div>
         </div>
 
-        <div className="hidden sm:block absolute bottom-8 left-1/2 -translate-x-1/2 text-[var(--muted)] text-[10px] font-mono tracking-widest animate-bounce">
+        <div className="hidden sm:block absolute bottom-8 left-1/2 -translate-x-1/2 text-[var(--muted)] text-[11px] font-lab tracking-[0.2em] uppercase animate-bounce">
           [ SCROLL TO ACCESS WORKSTATIONS ] ⌄
         </div>
       </section>
@@ -118,7 +119,7 @@ export default function Home() {
         <div className="mb-10 sm:mb-14">
           <div className="flex items-center gap-2 mb-2">
             <span className="h-px w-8 bg-[var(--cyan)]/60" />
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--cyan)]">
+            <span className="font-lab text-xs uppercase tracking-[0.24em] font-semibold text-[var(--cyan)]">
               RESEARCH WORKSTATIONS
             </span>
           </div>
@@ -151,7 +152,7 @@ export default function Home() {
                 />
 
                 {/* Tech ID Tag */}
-                <div className="flex items-center justify-between text-[10px] font-mono text-[var(--muted)] mb-4">
+                <div className="flex items-center justify-between text-[11px] font-lab tracking-wider text-[var(--muted)] mb-4 uppercase font-semibold">
                   <span className="text-[var(--cyan)]">{MODULE_CODES[m.id] || "MOD-00"}</span>
                   <span className="w-1.5 h-1.5 rounded-full" style={{ background: m.accent }} />
                 </div>
@@ -170,7 +171,7 @@ export default function Home() {
                   {m.desc}
                 </p>
 
-                <div className="mt-4 pt-3 border-t border-[rgba(0,245,255,0.08)] flex items-center justify-between text-[11px] font-mono text-[var(--muted)] group-hover:text-[var(--cyan)]">
+                <div className="mt-4 pt-3 border-t border-[rgba(0,245,255,0.08)] flex items-center justify-between text-[11px] font-lab font-semibold tracking-wider text-[var(--muted)] group-hover:text-[var(--cyan)] uppercase">
                   <span>LAUNCH MODULE</span>
                   <span>→</span>
                 </div>
@@ -185,7 +186,7 @@ export default function Home() {
         <div className="glass rounded-3xl p-7 sm:p-12 md:p-16 text-center relative overflow-hidden border border-[rgba(0,245,255,0.25)] shadow-[0_0_50px_rgba(0,191,255,0.15)]">
           <div className="absolute inset-0 chem-grid opacity-25" />
           <div className="relative z-10 max-w-2xl mx-auto">
-            <span className="inline-block font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-[var(--cyan)] mb-3 sm:mb-4 px-3 py-1 rounded-full glass border border-[rgba(0,245,255,0.2)]">
+            <span className="inline-block font-lab text-xs uppercase tracking-[0.25em] font-semibold text-[var(--cyan)] mb-3 sm:mb-4 px-4 py-1.5 rounded-full glass border border-[rgba(0,245,255,0.2)]">
               HIGH-ENERGY REACTION CHAMBER
             </span>
             <h2 className="font-display font-extrabold text-2xl sm:text-4xl md:text-5xl text-[#E6F7FF]">
@@ -197,7 +198,7 @@ export default function Home() {
             <Link
               to="/reaction-simulator"
               data-testid="cta-band-btn"
-              className="relative inline-flex mt-6 sm:mt-8 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-mono text-xs sm:text-sm font-semibold bg-[var(--cyan)] text-black hover:glow-cyan transition-all text-center justify-center shadow-[0_0_25px_rgba(0,245,255,0.4)]"
+              className="relative inline-flex mt-6 sm:mt-8 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-lab text-xs sm:text-sm font-bold tracking-wider uppercase bg-[var(--cyan)] text-black hover:glow-cyan transition-all text-center justify-center shadow-[0_0_25px_rgba(0,245,255,0.4)]"
             >
               LAUNCH REACTION SIMULATOR →
             </Link>
